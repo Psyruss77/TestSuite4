@@ -1,0 +1,32 @@
+.. _ts4:
+
+Developer Interface
+===================
+
+.. module:: tonos_ts4.ts4
+
+This part of the documentation covers all the interfaces of TS4.
+
+Main Interface
+--------------
+
+
+.. autofunction:: init
+
+Address() helpers.
+
+.. autofunction:: zero_addr
+.. autofunction:: ensure_address
+.. autofunction:: fix_abi
+
+
+Classes
+-------
+
+.. autoclass:: tonos_ts4.ts4.BaseContract
+
+.. autoclass:: tonos_ts4.ts4.Address
+
+.. autoclass:: tonos_ts4.ts4.Msg
+
+.. autoclass:: tonos_ts4.ts4.Bytes

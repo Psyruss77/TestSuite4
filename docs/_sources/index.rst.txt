@@ -1,0 +1,36 @@
+.. ts4 documentation master file, created by
+   sphinx-quickstart on Mon Mar  8 13:50:50 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to TestSuite4's documentation!
+======================================
+Release v\ |version| (:ref:`Installation <install>`)
+
+**TestSuite4** is a framework designed to simplify development and testing of TON Contracts. It contains lightweight blockchain emulator making it easy to develop contracts in a TDD-friendly style.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
+
+   install
+   tutorials
+
+The API Documentation
+---------------------
+
+If you are looking for information on a specific function, class, or method,
+this part of the documentation is for you.
+
+.. toctree::
+   :maxdepth: 4
+
+   ts4
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
