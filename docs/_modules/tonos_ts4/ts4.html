@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <meta name="generator" content="sphinx-3.5.2, furo 2021.03.20.beta30"/>
-        <title>tonos_ts4.ts4 - TestSuite4 documentation v0.2.0rc1</title>
+        <title>tonos_ts4.ts4 - TestSuite4 v0.2.0rc1</title>
       <link rel="stylesheet" href="../../_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
     <link rel="stylesheet" href="../../_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
@@ -87,7 +87,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">TestSuite4 documentation v0.2.0rc1</div></a>
+      <a href="../../index.html"><div class="brand">TestSuite4 v0.2.0rc1</div></a>
     </div>
     <div class="header-right">
       <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
@@ -100,8 +100,12 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../_static/logo_a.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/logo-b.svg" alt="Dark Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">TestSuite4 documentation v0.2.0rc1</span>
+  <span class="sidebar-brand-text">TestSuite4 v0.2.0rc1</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html">
   <input class="sidebar-search" placeholder=Search name="q">
@@ -184,9 +188,11 @@
 
 <span class="n">G_ABI_FIXER</span>     <span class="o">=</span> <span class="kc">None</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">__version__</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">reset_all</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">QUEUE</span><span class="p">,</span> <span class="n">EVENTS</span><span class="p">,</span> <span class="n">ALL_MESSAGES</span><span class="p">,</span> <span class="n">NICKNAMES</span>
     <span class="n">core</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>
@@ -213,8 +219,9 @@
 <span class="k">def</span> <span class="nf">yellow</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>    <span class="k">return</span> <span class="n">colorize</span><span class="p">(</span><span class="n">BColors</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">white</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>     <span class="k">return</span> <span class="n">colorize</span><span class="p">(</span><span class="n">BColors</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>    <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 
-
+<span class="c1"># Class representing blockchain message</span>
 <div class="viewcode-block" id="Msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg">[docs]</a><span class="k">class</span> <span class="nc">Msg</span><span class="p">:</span>
+    <span class="c1"># data: Dictonary with message data</span>
 <div class="viewcode-block" id="Msg.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
         <span class="c1"># print(data)</span>
@@ -241,26 +248,44 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">value</span>   <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounced</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'bounced'</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Msg.is_type"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_type">[docs]</a>    <span class="k">def</span> <span class="nf">is_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type1</span><span class="p">,</span> <span class="n">type2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type3</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type4</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type5</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="n">type1</span><span class="p">,</span> <span class="n">type2</span><span class="p">,</span> <span class="n">type3</span><span class="p">,</span> <span class="n">type4</span><span class="p">,</span> <span class="n">type5</span><span class="p">]</span></div>
-<div class="viewcode-block" id="Msg.is_type_in"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_type_in">[docs]</a>    <span class="k">def</span> <span class="nf">is_type_in</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">types</span></div>
-<div class="viewcode-block" id="Msg.is_answer"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_answer">[docs]</a>    <span class="k">def</span> <span class="nf">is_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span></div>
-<div class="viewcode-block" id="Msg.is_call"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_call">[docs]</a>    <span class="k">def</span> <span class="nf">is_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'call'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span></div>
-<div class="viewcode-block" id="Msg.is_empty"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'empty'</span><span class="p">)</span></div>
-<div class="viewcode-block" id="Msg.is_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_event">[docs]</a>    <span class="k">def</span> <span class="nf">is_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'event'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">==</span> <span class="n">e</span><span class="p">):</span>
+    <span class="c1"># Check if a given message is one of requested types.</span>
+    <span class="k">def</span> <span class="nf">is_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type1</span><span class="p">,</span> <span class="n">type2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type3</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type4</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type5</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># type1: string - A name of desired type</span>
+        <span class="c1"># type2: optional/string - A name of desired type</span>
+        <span class="c1"># ...</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="n">type1</span><span class="p">,</span> <span class="n">type2</span><span class="p">,</span> <span class="n">type3</span><span class="p">,</span> <span class="n">type4</span><span class="p">,</span> <span class="n">type5</span><span class="p">]</span>
+    <span class="c1"># Check if a given message is one of requested types.</span>
+    <span class="k">def</span> <span class="nf">is_type_in</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">):</span>
+        <span class="c1"># types [list of strings]: a list of type names</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">types</span>
+    <span class="c1"># Checks if a given message is of type "answer".</span>
+    <span class="k">def</span> <span class="nf">is_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># method: (Optional) Desired name of a function answered.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span>
+    <span class="c1"># Checks if a given message is of type "call".</span>
+    <span class="k">def</span> <span class="nf">is_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># method: (Optional) Desired name of a function called.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'call'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span>
+    <span class="c1"># Checks if a given message is of type "empty".</span>
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'empty'</span><span class="p">)</span>
+    <span class="c1"># Checks if a given message is of type "event".</span>
+    <span class="k">def</span> <span class="nf">is_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># name: Desired name of event to check.</span>
+        <span class="c1"># src: Desired source address of event to check.</span>
+        <span class="c1"># dst: Desired destination address of event to check.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'event'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">==</span> <span class="n">name</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">src</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">eq</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="s1">'event.src:'</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">dst</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">eq</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dst</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="s1">'event.dst:'</span><span class="p">):</span>
                     <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
-<div class="viewcode-block" id="Msg.is_unknown"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_unknown">[docs]</a>    <span class="k">def</span> <span class="nf">is_unknown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">'unknown'</span></div>
-<div class="viewcode-block" id="Msg.dump_data"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.dump_data">[docs]</a>    <span class="k">def</span> <span class="nf">dump_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dump_struct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1"># Checks if a given message is of type "unknown".</span>
+    <span class="k">def</span> <span class="nf">is_unknown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">'unknown'</span>
+    <span class="c1"># Dumps message data .</span>
+    <span class="k">def</span> <span class="nf">dump_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dump_struct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="c1"># &lt;hide&gt;</span>
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">dump_struct_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
 
@@ -466,10 +491,12 @@
     <span class="k">if</span> <span class="n">time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">core</span><span class="o">.</span><span class="n">set_now</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">set_verbose</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">G_VERBOSE</span>
     <span class="n">G_VERBOSE</span> <span class="o">=</span> <span class="n">f</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">set_stop_at_crash</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">G_STOP_AT_CRASH</span>
     <span class="n">G_STOP_AT_CRASH</span> <span class="o">=</span> <span class="n">f</span>
@@ -542,25 +569,31 @@
             <span class="n">QUEUE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">gas_used</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">pop_msg</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">QUEUE</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">peek_msg</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">QUEUE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">pop_event</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">EVENTS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">peek_event</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">EVENTS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">queue_length</span><span class="p">():</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">ensure_queue_empty</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">),</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'ensure_queue_empty() -'</span><span class="p">))</span>
 
@@ -569,6 +602,7 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"  </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QUEUE</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">dispatch_messages</span><span class="p">():</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">dispatch_one_message</span><span class="p">()</span>
@@ -585,6 +619,7 @@
             <span class="n">prev_time</span> <span class="o">=</span> <span class="n">cur_time</span>
         <span class="n">dump_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">register_nickname</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">nickname</span><span class="p">):</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
     <span class="n">NICKNAMES</span><span class="p">[</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">()]</span> <span class="o">=</span> <span class="n">nickname</span>
@@ -625,6 +660,7 @@
         <span class="n">ttt</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt; "</span> <span class="o">+</span> <span class="n">green</span><span class="p">(</span><span class="n">ttt</span><span class="p">))</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">dispatch_one_message</span><span class="p">(</span><span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">pop_msg</span><span class="p">()</span>
     <span class="n">ALL_MESSAGES</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -689,7 +725,7 @@
 
     <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">'cell'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">value</span>
-        
+
     <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">'bytes'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Bytes</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
@@ -709,6 +745,7 @@
     <span class="n">verbose_</span><span class="p">(</span><span class="s2">"Unsupported type '</span><span class="si">{}</span><span class="s2">'"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">value</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">make_keypair</span><span class="p">():</span>
     <span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">make_keypair</span><span class="p">()</span>
     <span class="n">public_key</span> <span class="o">=</span> <span class="s1">'0x'</span> <span class="o">+</span> <span class="n">public_key</span>
@@ -731,15 +768,18 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="n">red</span><span class="p">(</span><span class="s1">'exp: </span><span class="si">{}</span><span class="s1">, got: </span><span class="si">{}</span><span class="s1">.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span> <span class="o">+</span> <span class="n">xtra</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">dismiss</span> <span class="k">else</span> <span class="kc">False</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">set_tests_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">G_TESTS_PATH</span>
     <span class="n">G_TESTS_PATH</span> <span class="o">=</span> <span class="n">path</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">str2bytes</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s1">'Expected string got </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="n">ss</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">()))[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">ss</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">bytes2str</span><span class="p">(</span><span class="n">b</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
 
@@ -762,6 +802,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">dump_struct_str</span><span class="p">(</span><span class="n">struct</span><span class="p">))</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">load_tvc</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.tvc'</span><span class="p">):</span>
@@ -769,12 +810,14 @@
     <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.tvc'</span><span class="p">):</span>
         <span class="n">fn</span> <span class="o">+=</span> <span class="s1">'.tvc'</span>
     <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">load_data_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.tvc'</span><span class="p">):</span>
@@ -791,12 +834,14 @@
     <span class="n">xtra</span> <span class="o">=</span> <span class="s2">", diff = </span><span class="si">{}</span><span class="s2">g (</span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grams</span><span class="p">(</span><span class="n">diff</span><span class="p">),</span> <span class="n">diff</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">expected</span><span class="p">),</span> <span class="n">got</span><span class="p">,</span> <span class="n">xtra</span> <span class="o">=</span> <span class="n">xtra</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="n">dismiss</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">register_abi</span><span class="p">(</span><span class="n">contract_name</span><span class="p">):</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">contract_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.abi.json'</span>
     <span class="k">if</span> <span class="n">G_VERBOSE</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">blue</span><span class="p">(</span><span class="s2">"Loading ABI "</span> <span class="o">+</span> <span class="n">fn</span><span class="p">))</span>
     <span class="n">core</span><span class="o">.</span><span class="n">set_contract_abi</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">set_contract_abi</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">new_abi_name</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">BaseContract</span><span class="p">)</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">new_abi_name</span><span class="p">)</span>
@@ -894,13 +939,14 @@
 
 <span class="c1">#########################################################################################################</span>
 
+<span class="c1">## TODO: add description</span>
 <span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="p">):</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">())</span>
 
 
 <div class="viewcode-block" id="BaseContract"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract">[docs]</a><span class="k">class</span> <span class="nc">BaseContract</span><span class="p">:</span>
-    <span class="sd">"""The :class:`BaseContract &lt;BaseContract&gt;` object, which responsible </span>
+    <span class="sd">"""The :class:`BaseContract &lt;BaseContract&gt;` object, which responsible</span>
 <span class="sd">    for deploying contracts and interaction with deployed contracts.</span>
 <span class="sd">    """</span>
 <div class="viewcode-block" id="BaseContract.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -957,7 +1003,7 @@
         <span class="k">if</span> <span class="n">nickname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">register_nickname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">(),</span> <span class="n">nickname</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BaseContract.init2"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.init2">[docs]</a>    <span class="k">def</span> <span class="nf">init2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">nickname</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">just_deployed</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">init2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">nickname</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">just_deployed</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name_</span> <span class="o">=</span> <span class="n">name</span>
         <span class="n">ensure_address</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span> <span class="o">=</span> <span class="n">address</span>
@@ -971,7 +1017,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">abi_</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'.abi.json'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
         <span class="k">if</span> <span class="n">G_ABI_FIXER</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">fix_abi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">abi_</span><span class="p">,</span> <span class="n">G_ABI_FIXER</span><span class="p">)</span></div>
+            <span class="n">fix_abi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">abi_</span><span class="p">,</span> <span class="n">G_ABI_FIXER</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BaseContract.balance"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.balance">[docs]</a>    <span class="k">def</span> <span class="nf">balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Retreives balance of a given contract.</span>
@@ -997,16 +1043,16 @@
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span></div>
 
-<div class="viewcode-block" id="BaseContract.ensure_balance"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.ensure_balance">[docs]</a>    <span class="k">def</span> <span class="nf">ensure_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">ensure_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="c1"># TODO: is this method needed here?</span>
-        <span class="n">ensure_balance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span><span class="p">(),</span> <span class="n">dismiss</span><span class="p">)</span></div>
+        <span class="n">ensure_balance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span><span class="p">(),</span> <span class="n">dismiss</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BaseContract.call_getter_raw"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.call_getter_raw">[docs]</a>    <span class="k">def</span> <span class="nf">call_getter_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
         <span class="sd">"""Calls a given getter and returns an answer in raw JSON format.</span>
 
 <span class="sd">        :param method: Name of a getter</span>
 <span class="sd">        :param params: A dictionary with getter parameters</span>
-<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value </span>
+<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value</span>
 <span class="sd">            if you expect a getter to raise an exception</span>
 <span class="sd">        :return: Message parameters</span>
 <span class="sd">        :rtype: JSON</span>
@@ -1046,18 +1092,18 @@
         <span class="k">assert</span> <span class="n">msg</span><span class="o">.</span><span class="n">is_answer</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">msg</span><span class="o">.</span><span class="n">params</span></div>
 
-<div class="viewcode-block" id="BaseContract._find_getter_output_types"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract._find_getter_output_types">[docs]</a>    <span class="k">def</span> <span class="nf">_find_getter_output_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_find_getter_output_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">abi_</span><span class="p">[</span><span class="s1">'functions'</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">rec</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="n">method</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">rec</span><span class="p">[</span><span class="s1">'outputs'</span><span class="p">]</span>
-        <span class="k">assert</span> <span class="kc">False</span></div>
+        <span class="k">assert</span> <span class="kc">False</span>
 
-<div class="viewcode-block" id="BaseContract._find_getter_output_type"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract._find_getter_output_type">[docs]</a>    <span class="k">def</span> <span class="nf">_find_getter_output_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_find_getter_output_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="n">types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_getter_output_types</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">t</span>
-        <span class="k">assert</span> <span class="kc">False</span></div>
+        <span class="k">assert</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="BaseContract.call_getter"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.call_getter">[docs]</a>    <span class="k">def</span> <span class="nf">call_getter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
         <span class="n">method</span><span class="p">,</span>
@@ -1073,9 +1119,9 @@
 
 <span class="sd">        :param method: Name of a getter</span>
 <span class="sd">        :param params: A dictionary with getter parameters</span>
-<span class="sd">        :param key: </span>
+<span class="sd">        :param key: (Optional) If function returns tuple this parameters forces to return only one value under the desired key.</span>
 <span class="sd">        :param dont_decode_fields: A list of fields in answer that should not be decoded</span>
-<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value </span>
+<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value</span>
 <span class="sd">            if you expect a getter to raise an exception</span>
 <span class="sd">        :return: A returned value in decoded form (exact type depends on the type of getter)</span>
 <span class="sd">        :rtype: type</span>
@@ -1089,7 +1135,7 @@
         <span class="n">answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_answer</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">DecodingParams</span><span class="p">(</span><span class="n">decode_ints</span><span class="p">,</span> <span class="n">decode_tuples</span><span class="p">,</span> <span class="n">dont_decode_fields</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">make_params</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="k">if</span> <span class="n">decode</span> <span class="k">else</span> <span class="n">answer</span></div>
 
-<div class="viewcode-block" id="BaseContract._decode_answer"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract._decode_answer">[docs]</a>    <span class="k">def</span> <span class="nf">_decode_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">_decode_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
         <span class="n">values</span><span class="p">,</span>
         <span class="n">method</span><span class="p">,</span>
         <span class="n">key</span><span class="p">,</span>
@@ -1109,7 +1155,7 @@
         <span class="n">value</span>     <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="n">full_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_getter_output_type</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">decode_json_value1</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">full_type</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">decode_json_value1</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">full_type</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BaseContract.decode_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.decode_event">[docs]</a>    <span class="k">def</span> <span class="nf">decode_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_msg</span><span class="p">):</span>
         <span class="sd">"""Experimental feature. Decodes event parameters</span>
@@ -1139,18 +1185,18 @@
 
         <span class="k">return</span> <span class="n">res</span></div>
 
-<div class="viewcode-block" id="BaseContract._dump_event_type"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract._dump_event_type">[docs]</a>    <span class="k">def</span> <span class="nf">_dump_event_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_dump_event_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">msg</span><span class="o">.</span><span class="n">is_event</span><span class="p">()</span>
-        <span class="n">dump_struct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_find_event_def</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">event</span><span class="p">))</span></div>
+        <span class="n">dump_struct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_find_event_def</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">event</span><span class="p">))</span>
 
-<div class="viewcode-block" id="BaseContract._find_event_def"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract._find_event_def">[docs]</a>    <span class="k">def</span> <span class="nf">_find_event_def</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_find_event_def</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_name</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">event_def</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">abi_</span><span class="p">[</span><span class="s1">'events'</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">event_def</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="n">event_name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">event_def</span>
-        <span class="k">return</span> <span class="kc">None</span></div>
+        <span class="k">return</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="BaseContract._make_tuple_result"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract._make_tuple_result">[docs]</a>    <span class="k">def</span> <span class="nf">_make_tuple_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_make_tuple_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="n">types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_getter_output_types</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
         <span class="n">res_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">res_arr</span>  <span class="o">=</span> <span class="p">[]</span>
@@ -1163,7 +1209,7 @@
         <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">decode_tuples</span> <span class="ow">and</span> <span class="n">types</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'value0'</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">res_arr</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">res_dict</span></div>
+            <span class="k">return</span> <span class="n">res_dict</span>
 
 <div class="viewcode-block" id="BaseContract.call_method"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.call_method">[docs]</a>    <span class="k">def</span> <span class="nf">call_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span> <span class="n">private_key</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
         <span class="sd">"""Calls a given method.</span>
@@ -1171,7 +1217,7 @@
 <span class="sd">        :param method: Name of a method to be called</span>
 <span class="sd">        :param params: A dictionary with parameters for calling a contract function</span>
 <span class="sd">        :param private_key: A private key to be used to sign a message</span>
-<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value </span>
+<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value</span>
 <span class="sd">            if you expect a getter to raise an exception</span>
 <span class="sd">        :return: Value in decoded form (if method returns something)</span>
 <span class="sd">        :rtype: dict</span>
@@ -1211,7 +1257,7 @@
 
 <span class="sd">        :param method: Name of a method to be called</span>
 <span class="sd">        :param params: A dictionary with parameters for calling a contract function</span>
-<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value </span>
+<span class="sd">        :param expect_ec: Expected exit code. Use non-zero value</span>
 <span class="sd">            if you expect a getter to raise an exception</span>
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">call_method</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">private_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">private_key_</span><span class="p">,</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="n">expect_ec</span><span class="p">)</span></div>

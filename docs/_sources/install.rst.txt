@@ -10,7 +10,7 @@ The first step to using any software package is getting it properly installed.
 Installing
 ----------
 
-To install latest release of the `TestSuite4 <https://pypi.org/project/tonos-ts4/>`_, simply run this simple command in your terminal of choice
+To install latest release of the `TestSuite4 <https://pypi.org/project/tonos-ts4/>`_, simply run this simple command in your terminal of choice:
 
 .. code-block:: shell
 
@@ -22,7 +22,7 @@ Get the Source Code
 TestSuite4 is actively developed on GitHub, where the code is
 `always available <https://github.com/tonlabs/TestSuite4>`_.
 
-You can either clone the public repository
+You can either clone the public repository:
 
 .. code-block:: shell
 
