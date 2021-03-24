@@ -28,5 +28,3 @@ Classes
 .. autoclass:: tonos_ts4.ts4.Address
 
 .. autoclass:: tonos_ts4.ts4.Msg
-
-.. autoclass:: tonos_ts4.ts4.Bytes
