@@ -16,8 +16,8 @@ Main Interface
 .. autofunction:: verbose_
 .. autofunction:: verbose
 
-Address() helpers
------------------
+Address helpers
+---------------
 
 .. autofunction:: zero_addr
 .. autofunction:: ensure_address
