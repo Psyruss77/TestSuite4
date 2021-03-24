@@ -430,15 +430,15 @@
         <span class="k">return</span> <span class="kc">False</span>
 
 
-<span class="k">class</span> <span class="nc">JsonEncoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+<div class="viewcode-block" id="JsonEncoder"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.JsonEncoder">[docs]</a><span class="k">class</span> <span class="nc">JsonEncoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
+<div class="viewcode-block" id="JsonEncoder.default"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.JsonEncoder.default">[docs]</a>    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
         <span class="c1"># verbose_(o)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Address</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">str</span><span class="p">()</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Bytes</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">raw_</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="kc">False</span>
+            <span class="k">assert</span> <span class="kc">False</span></div></div>
 
 <span class="k">class</span> <span class="nc">Params</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
@@ -528,16 +528,16 @@
     <span class="k">if</span> <span class="n">time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">core</span><span class="o">.</span><span class="n">set_now</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">set_verbose</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="set_verbose"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.set_verbose">[docs]</a><span class="k">def</span> <span class="nf">set_verbose</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">"""Sets verbosity mode. When verbosity is enabled all the messages </span>
 <span class="sd">    and some additional stuff is printed to console. Useful for debugging.</span>
 
 <span class="sd">    :param bool verbose: Toggle to print additional execution info</span>
 <span class="sd">    """</span>
     <span class="k">global</span> <span class="n">G_VERBOSE</span>
-    <span class="n">G_VERBOSE</span> <span class="o">=</span> <span class="n">verbose</span>
+    <span class="n">G_VERBOSE</span> <span class="o">=</span> <span class="n">verbose</span></div>
 
-<span class="k">def</span> <span class="nf">set_stop_at_crash</span><span class="p">(</span><span class="n">do_stop</span><span class="p">):</span>
+<div class="viewcode-block" id="set_stop_at_crash"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.set_stop_at_crash">[docs]</a><span class="k">def</span> <span class="nf">set_stop_at_crash</span><span class="p">(</span><span class="n">do_stop</span><span class="p">):</span>
     <span class="sd">"""Sets `G_STOP_AT_CRASH` global flag. </span>
 <span class="sd">    By default the system stops at the first exception (unexpected exit code) raised by a contract.</span>
 <span class="sd">    Use `expect_ec` parameter if you expected an exception in a given call. </span>
@@ -546,16 +546,16 @@
 <span class="sd">    :param bool do_stop: Toggle for crash stop mode</span>
 <span class="sd">    """</span>
     <span class="k">global</span> <span class="n">G_STOP_AT_CRASH</span>
-    <span class="n">G_STOP_AT_CRASH</span> <span class="o">=</span> <span class="n">do_stop</span>
+    <span class="n">G_STOP_AT_CRASH</span> <span class="o">=</span> <span class="n">do_stop</span></div>
 
-<span class="k">def</span> <span class="nf">verbose_</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+<div class="viewcode-block" id="verbose_"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.verbose_">[docs]</a><span class="k">def</span> <span class="nf">verbose_</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
     <span class="sd">"""Helper function to show text colored red in console. Useful when debugging.</span>
 
 <span class="sd">    :param str msg: String message to be printed</span>
 <span class="sd">    """</span>
-    <span class="n">verbose</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">show_always</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color_red</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">verbose</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">show_always</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color_red</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">show_always</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">color_red</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="verbose"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.verbose">[docs]</a><span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">show_always</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">color_red</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="sd">"""Helper function to print text message in verbose mode.</span>
 
 <span class="sd">    :param str msg: String message to be printed</span>
@@ -565,7 +565,7 @@
     <span class="k">if</span> <span class="n">G_VERBOSE</span> <span class="ow">or</span> <span class="n">show_always</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">color_red</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="n">red</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
 <span class="c1"># &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">prettify_dict</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">max_str_len</span> <span class="o">=</span> <span class="mi">67</span><span class="p">):</span>
@@ -628,68 +628,68 @@
             <span class="n">QUEUE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">gas_used</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">pop_msg</span><span class="p">():</span>
+<div class="viewcode-block" id="pop_msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.pop_msg">[docs]</a><span class="k">def</span> <span class="nf">pop_msg</span><span class="p">():</span>
     <span class="sd">"""Removes first message from the unprocessed messages queue and returns it.</span>
 
 <span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">QUEUE</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">QUEUE</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">peek_msg</span><span class="p">():</span>
+<div class="viewcode-block" id="peek_msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.peek_msg">[docs]</a><span class="k">def</span> <span class="nf">peek_msg</span><span class="p">():</span>
     <span class="sd">"""Returns first message from the unprocessed messages queue and leaving the queue untouched.</span>
 
 <span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">QUEUE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">QUEUE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<span class="k">def</span> <span class="nf">pop_event</span><span class="p">():</span>
+<div class="viewcode-block" id="pop_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.pop_event">[docs]</a><span class="k">def</span> <span class="nf">pop_event</span><span class="p">():</span>
     <span class="sd">"""Removes first event from the unprocessed events queue and returns it.</span>
 
 <span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">EVENTS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">EVENTS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">peek_event</span><span class="p">():</span>
+<div class="viewcode-block" id="peek_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.peek_event">[docs]</a><span class="k">def</span> <span class="nf">peek_event</span><span class="p">():</span>
     <span class="sd">"""Returns first event from the unprocessed events queue and leaving the queue untouched.</span>
 
 <span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">EVENTS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">EVENTS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<span class="k">def</span> <span class="nf">queue_length</span><span class="p">():</span>
+<div class="viewcode-block" id="queue_length"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.queue_length">[docs]</a><span class="k">def</span> <span class="nf">queue_length</span><span class="p">():</span>
     <span class="sd">"""Returns the size of the unprocessed messages queue.</span>
 
 <span class="sd">    :return: Queue length</span>
 <span class="sd">    :rtype: num</span>
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">ensure_queue_empty</span><span class="p">():</span>
+<div class="viewcode-block" id="ensure_queue_empty"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.ensure_queue_empty">[docs]</a><span class="k">def</span> <span class="nf">ensure_queue_empty</span><span class="p">():</span>
     <span class="sd">"""Checks if the unprocessed messages queue is empty</span>
 <span class="sd">    and raises an error in the opposite case. Useful for debugging.</span>
 <span class="sd">    """</span>
-    <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">),</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'ensure_queue_empty() -'</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">),</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'ensure_queue_empty() -'</span><span class="p">))</span></div>
 
-<span class="k">def</span> <span class="nf">dump_queue</span><span class="p">():</span>
+<div class="viewcode-block" id="dump_queue"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.dump_queue">[docs]</a><span class="k">def</span> <span class="nf">dump_queue</span><span class="p">():</span>
     <span class="sd">"""Dumps messages queue to the console.</span>
 <span class="sd">    """</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">colorize</span><span class="p">(</span><span class="n">BColors</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span> <span class="s2">"QUEUE:"</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"  </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QUEUE</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"  </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QUEUE</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span></div>
 
-<span class="k">def</span> <span class="nf">dispatch_messages</span><span class="p">():</span>
+<div class="viewcode-block" id="dispatch_messages"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.dispatch_messages">[docs]</a><span class="k">def</span> <span class="nf">dispatch_messages</span><span class="p">():</span>
     <span class="sd">"""Dispatches all messages in the queue one by one until the queue becomes empty.</span>
 <span class="sd">    """</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">dispatch_one_message</span><span class="p">()</span>
+        <span class="n">dispatch_one_message</span><span class="p">()</span></div>
 
 <span class="c1">## &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">dump_all_messages</span><span class="p">():</span>
@@ -705,7 +705,7 @@
         <span class="n">dump_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">register_nickname</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">nickname</span><span class="p">):</span>
+<div class="viewcode-block" id="register_nickname"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.register_nickname">[docs]</a><span class="k">def</span> <span class="nf">register_nickname</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">nickname</span><span class="p">):</span>
     <span class="sd">"""Registers human readable name for a given address. </span>
 <span class="sd">    This name is used in verbose output.</span>
 
@@ -713,7 +713,7 @@
 <span class="sd">    :param str nickname: A nickname for the account</span>
 <span class="sd">    """</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
-    <span class="n">NICKNAMES</span><span class="p">[</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">()]</span> <span class="o">=</span> <span class="n">nickname</span>
+    <span class="n">NICKNAMES</span><span class="p">[</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">()]</span> <span class="o">=</span> <span class="n">nickname</span></div>
 
 <span class="k">def</span> <span class="nf">_format_addr</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">compact</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
@@ -751,7 +751,7 @@
         <span class="n">ttt</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt; "</span> <span class="o">+</span> <span class="n">green</span><span class="p">(</span><span class="n">ttt</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">dispatch_one_message</span><span class="p">(</span><span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="dispatch_one_message"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.dispatch_one_message">[docs]</a><span class="k">def</span> <span class="nf">dispatch_one_message</span><span class="p">(</span><span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="sd">"""Takes first unprocessed message from the queue and dispatches it.</span>
 <span class="sd">    Use `expect_ec` parameter if you expect non-zero exit code.</span>
 
@@ -776,7 +776,7 @@
     <span class="n">gas</span><span class="p">,</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">process_actions</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expect_ec</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span>
     <span class="c1"># if msg['id'] == 2050: quit()</span>
-    <span class="k">return</span> <span class="n">gas</span>
+    <span class="k">return</span> <span class="n">gas</span></div>
 
 <span class="k">def</span> <span class="nf">set_msg_filter</span><span class="p">(</span><span class="nb">filter</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">G_MSG_FILTER</span>
@@ -784,7 +784,7 @@
     <span class="k">if</span> <span class="nb">filter</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span> <span class="nb">filter</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">G_MSG_FILTER</span> <span class="o">=</span> <span class="nb">filter</span>
 
-<span class="k">def</span> <span class="nf">decode_int</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<div class="viewcode-block" id="decode_int"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.decode_int">[docs]</a><span class="k">def</span> <span class="nf">decode_int</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="sd">"""Decodes integer value from hex string. Helper function useful when decoding data from contracts.</span>
 
 <span class="sd">    :param str v: Hexadecimal string</span>
@@ -794,7 +794,7 @@
     <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'0x'</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'0x'</span><span class="p">,</span> <span class="s1">''</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span></div>
 
 <span class="k">class</span> <span class="nc">DecodingParams</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -848,7 +848,7 @@
     <span class="n">verbose_</span><span class="p">(</span><span class="s2">"Unsupported type '</span><span class="si">{}</span><span class="s2">'"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">value</span>
 
-<span class="k">def</span> <span class="nf">make_keypair</span><span class="p">():</span>
+<div class="viewcode-block" id="make_keypair"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.make_keypair">[docs]</a><span class="k">def</span> <span class="nf">make_keypair</span><span class="p">():</span>
     <span class="sd">"""Generates random keypair.</span>
 
 <span class="sd">    :return: The key pair</span>
@@ -856,7 +856,7 @@
 <span class="sd">    """</span>
     <span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">make_keypair</span><span class="p">()</span>
     <span class="n">public_key</span> <span class="o">=</span> <span class="s1">'0x'</span> <span class="o">+</span> <span class="n">public_key</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">colorize</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">isatty</span><span class="p">():</span>
@@ -864,16 +864,16 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">text</span>
 
-<span class="k">def</span> <span class="nf">eq</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xtra</span> <span class="o">=</span> <span class="s1">''</span><span class="p">):</span>
+<div class="viewcode-block" id="eq"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.eq">[docs]</a><span class="k">def</span> <span class="nf">eq</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xtra</span> <span class="o">=</span> <span class="s1">''</span><span class="p">):</span>
     <span class="sd">"""Helper function to check that two values are equal.</span>
-<span class="sd">        Prints the message in case of mismatch, and optionally stops tests execution.</span>
+<span class="sd">    Prints the message in case of mismatch, and optionally stops tests execution.</span>
 
-<span class="sd">    :param v1: - Expected value</span>
-<span class="sd">    :param v2: - Actual value</span>
-<span class="sd">    :param bool dismiss: - When False stops the entire execution in case of mismatch.</span>
+<span class="sd">    :param v1: Expected value</span>
+<span class="sd">    :param v2: Actual value</span>
+<span class="sd">    :param bool dismiss: When False stops the entire execution in case of mismatch.</span>
 <span class="sd">        When True only error message is shown</span>
-<span class="sd">    :param str msg: - Optional additional message to be printed in case of mismatch</span>
-<span class="sd">    :param str xtra: - Another option additional message to be printed</span>
+<span class="sd">    :param str msg: Optional additional message to be printed in case of mismatch</span>
+<span class="sd">    :param str xtra: Another option additional message to be printed</span>
 <span class="sd">    :return: Сomparison result</span>
 <span class="sd">    :rtype: bool</span>
 <span class="sd">    """</span>
@@ -885,17 +885,17 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s1">' '</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="n">red</span><span class="p">(</span><span class="s1">'exp: </span><span class="si">{}</span><span class="s1">, got: </span><span class="si">{}</span><span class="s1">.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span> <span class="o">+</span> <span class="n">xtra</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">dismiss</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">dismiss</span> <span class="k">else</span> <span class="kc">False</span></div>
 
-<span class="k">def</span> <span class="nf">set_tests_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="set_tests_path"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.set_tests_path">[docs]</a><span class="k">def</span> <span class="nf">set_tests_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="sd">"""Sets the directory where the system will look for compiled contracts.</span>
 
 <span class="sd">    :param str path: The path to contracts artifacts</span>
 <span class="sd">    """</span>
     <span class="k">global</span> <span class="n">G_TESTS_PATH</span>
-    <span class="n">G_TESTS_PATH</span> <span class="o">=</span> <span class="n">path</span>
+    <span class="n">G_TESTS_PATH</span> <span class="o">=</span> <span class="n">path</span></div>
 
-<span class="k">def</span> <span class="nf">str2bytes</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="str2bytes"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.str2bytes">[docs]</a><span class="k">def</span> <span class="nf">str2bytes</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">"""Converts string to hex representations.</span>
 
 <span class="sd">    :param str s: A string to convert</span>
@@ -904,17 +904,17 @@
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s1">'Expected string got </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="n">ss</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">()))[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="k">return</span> <span class="n">ss</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ss</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span></div>
 
 <span class="c1">## Decodes utf-8 string from hex representation</span>
-<span class="k">def</span> <span class="nf">bytes2str</span><span class="p">(</span><span class="n">b</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="bytes2str"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.bytes2str">[docs]</a><span class="k">def</span> <span class="nf">bytes2str</span><span class="p">(</span><span class="n">b</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">"""Decodes utf-8 string from hex representation</span>
 
 <span class="sd">    :param str b: Hexadecimal string to convert</span>
 <span class="sd">    :return: String</span>
 <span class="sd">    :rtype: str</span>
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">make_secret_token</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="s1">'0x'</span> <span class="o">+</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -941,7 +941,7 @@
         <span class="n">fn</span> <span class="o">+=</span> <span class="n">ext</span>
     <span class="k">return</span> <span class="n">fn</span>
 
-<span class="k">def</span> <span class="nf">load_tvc</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+<div class="viewcode-block" id="load_tvc"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.load_tvc">[docs]</a><span class="k">def</span> <span class="nf">load_tvc</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="sd">"""Loads a compiled contract image (`.tvc`) with a given name.</span>
 
 <span class="sd">    :param str fn: The file name</span>
@@ -950,9 +950,9 @@
 <span class="sd">    """</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'.tvc'</span><span class="p">)</span>
     <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+<div class="viewcode-block" id="load_code_cell"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.load_code_cell">[docs]</a><span class="k">def</span> <span class="nf">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="sd">"""Loads contract code cell from a compiled contract image with a given name.</span>
 <span class="sd">    Returns cell encoded to string.</span>
 
@@ -961,9 +961,9 @@
 <span class="sd">    :rtype: str</span>
 <span class="sd">    """</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'.tvc'</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">load_data_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+<div class="viewcode-block" id="load_data_cell"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.load_data_cell">[docs]</a><span class="k">def</span> <span class="nf">load_data_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="sd">"""Loads contract data cell from a compiled contract image with a given name.</span>
 <span class="sd">    Returns cell encoded to string</span>
 
@@ -972,12 +972,12 @@
 <span class="sd">    :rtype: str</span>
 <span class="sd">    """</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'.tvc'</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">load_data_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">load_data_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">grams</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="s1">'</span><span class="si">{:.3f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">GRAM</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.000'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">ensure_balance</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">got</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ensure_balance"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.ensure_balance">[docs]</a><span class="k">def</span> <span class="nf">ensure_balance</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">got</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">"""Checks the contract balance for exact match.</span>
 <span class="sd">    In case of mismatch prints the difference in a convenient form.</span>
 
@@ -991,9 +991,9 @@
     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">epsilon</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="n">xtra</span> <span class="o">=</span> <span class="s2">", diff = </span><span class="si">{}</span><span class="s2">g (</span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grams</span><span class="p">(</span><span class="n">diff</span><span class="p">),</span> <span class="n">diff</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">expected</span><span class="p">),</span> <span class="n">got</span><span class="p">,</span> <span class="n">xtra</span> <span class="o">=</span> <span class="n">xtra</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="n">dismiss</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">expected</span><span class="p">),</span> <span class="n">got</span><span class="p">,</span> <span class="n">xtra</span> <span class="o">=</span> <span class="n">xtra</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="n">dismiss</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">register_abi</span><span class="p">(</span><span class="n">contract_name</span><span class="p">):</span>
+<div class="viewcode-block" id="register_abi"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.register_abi">[docs]</a><span class="k">def</span> <span class="nf">register_abi</span><span class="p">(</span><span class="n">contract_name</span><span class="p">):</span>
     <span class="sd">"""Loads an ABI for a given contract without its construction.</span>
 <span class="sd">    Useful when some contracts are deployed indirectly (i.e. from other contracts).</span>
 
@@ -1002,9 +1002,9 @@
     <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">contract_name</span><span class="p">,</span> <span class="s1">'.abi.json'</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">G_VERBOSE</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">blue</span><span class="p">(</span><span class="s2">"Loading ABI "</span> <span class="o">+</span> <span class="n">fn</span><span class="p">))</span>
-    <span class="n">core</span><span class="o">.</span><span class="n">set_contract_abi</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+    <span class="n">core</span><span class="o">.</span><span class="n">set_contract_abi</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">set_contract_abi</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">new_abi_name</span><span class="p">):</span>
+<div class="viewcode-block" id="set_contract_abi"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.set_contract_abi">[docs]</a><span class="k">def</span> <span class="nf">set_contract_abi</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">new_abi_name</span><span class="p">):</span>
     <span class="sd">"""Sets new ABI for a given contract. Useful when contract code was upgraded.</span>
 
 <span class="sd">    :param BaseContract contract: An instance of the contract where the ABI will be set</span>
@@ -1013,7 +1013,7 @@
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">BaseContract</span><span class="p">)</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">new_abi_name</span><span class="p">,</span> <span class="s1">'.abi.json'</span><span class="p">)</span>
     <span class="n">core</span><span class="o">.</span><span class="n">set_contract_abi</span><span class="p">(</span><span class="n">contract</span><span class="o">.</span><span class="n">addr</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="p">(),</span> <span class="n">fn</span><span class="p">)</span>
-    <span class="n">contract</span><span class="o">.</span><span class="n">abi_</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="n">contract</span><span class="o">.</span><span class="n">abi_</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span></div>
 
 
 <span class="c1">#########################################################################################################</span>
@@ -1104,7 +1104,7 @@
 
 <span class="c1">#########################################################################################################</span>
 
-<span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="p">):</span>
+<div class="viewcode-block" id="get_balance"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.get_balance">[docs]</a><span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="p">):</span>
     <span class="sd">"""Retrieves the balance of a given address.</span>
 
 <span class="sd">    :param Address addr: The file name</span>
@@ -1112,7 +1112,7 @@
 <span class="sd">    :rtype: num</span>
 <span class="sd">    """</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="BaseContract"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract">[docs]</a><span class="k">class</span> <span class="nc">BaseContract</span><span class="p">:</span>
