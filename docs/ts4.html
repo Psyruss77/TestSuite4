@@ -119,6 +119,8 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Developer Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#main-interface">Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 
 </div>
@@ -136,8 +138,9 @@
         <div class="section" id="module-tonos_ts4.ts4">
 <span id="developer-interface"></span><span id="ts4"></span><h1>Developer Interface<a class="headerlink" href="#module-tonos_ts4.ts4" title="Permalink to this headline">¶</a></h1>
 <p>This part of the documentation covers all the interfaces of TS4.</p>
+</div>
 <div class="section" id="main-interface">
-<h2>Main Interface<a class="headerlink" href="#main-interface" title="Permalink to this headline">¶</a></h2>
+<h1>Main Interface<a class="headerlink" href="#main-interface" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.init">
 <code class="sig-name descname"><span class="pre">init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.init" title="Permalink to this definition">¶</a></dt>
@@ -150,47 +153,6 @@
 <li><p><strong>time</strong> (<em>num</em>) – Time in seconds (unixtime).
 TS4 uses either real-clock or virtual time. Once you set time you switch
 to the virtual time mode.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<p>Address() helpers.</p>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.zero_addr">
-<code class="sig-name descname"><span class="pre">zero_addr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#zero_addr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.zero_addr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a zero address instance in a given workchain.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>wc</strong> (<em>num</em>) – Workchain ID</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> object</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>address</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.ensure_address">
-<code class="sig-name descname"><span class="pre">ensure_address</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#ensure_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.ensure_address" title="Permalink to this definition">¶</a></dt>
-<dd><p>Raises an error is a given object is not <a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – Object of class Address</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.fix_abi">
-<code class="sig-name descname"><span class="pre">fix_abi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#fix_abi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.fix_abi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Travels given ABI calling a callback function for each node</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – Contract name</p></li>
-<li><p><strong>abi</strong> (<em>dict</em>) – Contract ABI</p></li>
-<li><p><strong>callback</strong> – Transformation function called for each node.</p></li>
 </ul>
 </dd>
 </dl>
@@ -243,6 +205,114 @@ When <cite>G_STOP_AT_CRASH</cite> is disabled the system only warns user and doe
 </dd>
 </dl>
 </dd></dl>
+<div class="section" id="address-helpers">
+<h2>Address() helpers<a class="headerlink" href="#address-helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.zero_addr">
+<code class="sig-name descname"><span class="pre">zero_addr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#zero_addr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.zero_addr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a zero address instance in a given workchain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wc</strong> (<em>num</em>) – Workchain ID</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>address</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.ensure_address">
+<code class="sig-name descname"><span class="pre">ensure_address</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#ensure_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.ensure_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an error is a given object is not <a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – Object of class Address</p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="section" id="account-balance">
+<h2>Account balance<a class="headerlink" href="#account-balance" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.ensure_balance">
+<code class="sig-name descname"><span class="pre">ensure_balance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">got</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dismiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#ensure_balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.ensure_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the contract balance for exact match.
+In case of mismatch prints the difference in a convenient form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expected</strong> (<em>num</em>) – Expected balance value</p></li>
+<li><p><strong>got</strong> (<em>num</em>) – Сurrent balance value</p></li>
+<li><p><strong>dismiss</strong> (<em>bool</em>) – When False don’t stop the execution in case of mismatch</p></li>
+<li><p><strong>epsilon</strong> (<em>num</em>) – Allowed difference between requested and actual balances</p></li>
+<li><p><strong>msg</strong> (<em>str</em>) – Optional message to print in case of mismatch</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.get_balance">
+<code class="sig-name descname"><span class="pre">get_balance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#get_balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the balance of a given address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – The file name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Current account balance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>num</p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="section" id="work-with-abi">
+<h2>Work with ABI<a class="headerlink" href="#work-with-abi" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.fix_abi">
+<code class="sig-name descname"><span class="pre">fix_abi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#fix_abi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.fix_abi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Travels given ABI calling a callback function for each node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Contract name</p></li>
+<li><p><strong>abi</strong> (<em>dict</em>) – Contract ABI</p></li>
+<li><p><strong>callback</strong> – Transformation function called for each node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.register_abi">
+<code class="sig-name descname"><span class="pre">register_abi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contract_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#register_abi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.register_abi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads an ABI for a given contract without its construction.
+Useful when some contracts are deployed indirectly (i.e. from other contracts).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>contract_name</strong> (<em>str</em>) – The contract name whose ABI to upload</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.set_contract_abi">
+<code class="sig-name descname"><span class="pre">set_contract_abi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contract</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_abi_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#set_contract_abi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.set_contract_abi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets new ABI for a given contract. Useful when contract code was upgraded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contract</strong> (<a class="reference internal" href="#tonos_ts4.ts4.BaseContract" title="tonos_ts4.ts4.BaseContract"><em>BaseContract</em></a>) – An instance of the contract where the ABI will be set</p></li>
+<li><p><strong>new_abi_name</strong> (<em>str</em>) – Name of the file containing the ABI</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="section" id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.pop_msg">
 <code class="sig-name descname"><span class="pre">pop_msg</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#pop_msg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.pop_msg" title="Permalink to this definition">¶</a></dt>
@@ -319,25 +389,8 @@ and raises an error in the opposite case. Useful for debugging.</p>
 <code class="sig-name descname"><span class="pre">dump_queue</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#dump_queue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.dump_queue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dumps messages queue to the console.</p>
 </dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.dispatch_messages">
-<code class="sig-name descname"><span class="pre">dispatch_messages</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#dispatch_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.dispatch_messages" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dispatches all messages in the queue one by one until the queue becomes empty.</p>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.register_nickname">
-<code class="sig-name descname"><span class="pre">register_nickname</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nickname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#register_nickname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.register_nickname" title="Permalink to this definition">¶</a></dt>
-<dd><p>Registers human readable name for a given address. 
-This name is used in verbose output.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – A address account</p></li>
-<li><p><strong>nickname</strong> (<em>str</em>) – A nickname for the account</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
+<div class="section" id="dispatching">
+<h3>Dispatching<a class="headerlink" href="#dispatching" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.dispatch_one_message">
 <code class="sig-name descname"><span class="pre">dispatch_one_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expect_ec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#dispatch_one_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.dispatch_one_message" title="Permalink to this definition">¶</a></dt>
@@ -352,6 +405,82 @@ Use <cite>expect_ec</cite> parameter if you expect non-zero exit code.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>num</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.dispatch_messages">
+<code class="sig-name descname"><span class="pre">dispatch_messages</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#dispatch_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.dispatch_messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dispatches all messages in the queue one by one until the queue becomes empty.</p>
+</dd></dl>
+</div>
+</div>
+<div class="section" id="artifacts">
+<h2>Artifacts<a class="headerlink" href="#artifacts" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.load_tvc">
+<code class="sig-name descname"><span class="pre">load_tvc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#load_tvc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.load_tvc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a compiled contract image (<cite>.tvc</cite>) with a given name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fn</strong> (<em>str</em>) – The file name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Base64-encoded tvc-file contents</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.load_code_cell">
+<code class="sig-name descname"><span class="pre">load_code_cell</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#load_code_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.load_code_cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads contract code cell from a compiled contract image with a given name.
+Returns cell encoded to string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fn</strong> (<em>str</em>) – The file name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Base64-encoded string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.load_data_cell">
+<code class="sig-name descname"><span class="pre">load_data_cell</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#load_data_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.load_data_cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads contract data cell from a compiled contract image with a given name.
+Returns cell encoded to string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fn</strong> (<em>str</em>) – The file name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Base64-encoded string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="section" id="other">
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.register_nickname">
+<code class="sig-name descname"><span class="pre">register_nickname</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nickname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#register_nickname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.register_nickname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers human readable name for a given address. 
+This name is used in verbose output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – A address account</p></li>
+<li><p><strong>nickname</strong> (<em>str</em>) – A nickname for the account</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -450,116 +579,10 @@ When True only error message is shown</p></li>
 </dd>
 </dl>
 </dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.load_tvc">
-<code class="sig-name descname"><span class="pre">load_tvc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#load_tvc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.load_tvc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads a compiled contract image (<cite>.tvc</cite>) with a given name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fn</strong> (<em>str</em>) – The file name</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Base64-encoded tvc-file contents</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.load_code_cell">
-<code class="sig-name descname"><span class="pre">load_code_cell</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#load_code_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.load_code_cell" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads contract code cell from a compiled contract image with a given name.
-Returns cell encoded to string.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fn</strong> (<em>str</em>) – The file name</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Base64-encoded string</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.load_data_cell">
-<code class="sig-name descname"><span class="pre">load_data_cell</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#load_data_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.load_data_cell" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads contract data cell from a compiled contract image with a given name.
-Returns cell encoded to string</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fn</strong> (<em>str</em>) – The file name</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Base64-encoded string</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.ensure_balance">
-<code class="sig-name descname"><span class="pre">ensure_balance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">got</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dismiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#ensure_balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.ensure_balance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks the contract balance for exact match.
-In case of mismatch prints the difference in a convenient form.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>expected</strong> (<em>num</em>) – Expected balance value</p></li>
-<li><p><strong>got</strong> (<em>num</em>) – Сurrent balance value</p></li>
-<li><p><strong>dismiss</strong> (<em>bool</em>) – When False don’t stop the execution in case of mismatch</p></li>
-<li><p><strong>epsilon</strong> (<em>num</em>) – Allowed difference between requested and actual balances</p></li>
-<li><p><strong>msg</strong> (<em>str</em>) – Optional message to print in case of mismatch</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.register_abi">
-<code class="sig-name descname"><span class="pre">register_abi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contract_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#register_abi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.register_abi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads an ABI for a given contract without its construction.
-Useful when some contracts are deployed indirectly (i.e. from other contracts).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>contract_name</strong> (<em>str</em>) – The contract name whose ABI to upload</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.set_contract_abi">
-<code class="sig-name descname"><span class="pre">set_contract_abi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contract</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_abi_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#set_contract_abi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.set_contract_abi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets new ABI for a given contract. Useful when contract code was upgraded.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>contract</strong> (<a class="reference internal" href="#tonos_ts4.ts4.BaseContract" title="tonos_ts4.ts4.BaseContract"><em>BaseContract</em></a>) – An instance of the contract where the ABI will be set</p></li>
-<li><p><strong>new_abi_name</strong> (<em>str</em>) – Name of the file containing the ABI</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt id="tonos_ts4.ts4.get_balance">
-<code class="sig-name descname"><span class="pre">get_balance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#get_balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.get_balance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieves the balance of a given address.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – The file name</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Current account balance</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>num</p>
-</dd>
-</dl>
-</dd></dl>
+</div>
 </div>
 <div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="tonos_ts4.ts4.BaseContract">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BaseContract</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctor_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pubkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nickname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#BaseContract"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.BaseContract" title="Permalink to this definition">¶</a></dt>
@@ -952,7 +975,6 @@ Address entity.</p>
 </dd></dl>
 </dd></dl>
 </div>
-</div>
 
       </article>
       <footer>
@@ -1000,11 +1022,20 @@ Address entity.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Developer Interface</a><ul>
-<li><a class="reference internal" href="#main-interface">Main Interface</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#">Developer Interface</a></li>
+<li><a class="reference internal" href="#main-interface">Main Interface</a><ul>
+<li><a class="reference internal" href="#address-helpers">Address() helpers</a></li>
+<li><a class="reference internal" href="#account-balance">Account balance</a></li>
+<li><a class="reference internal" href="#work-with-abi">Work with ABI</a></li>
+<li><a class="reference internal" href="#messages">Messages</a><ul>
+<li><a class="reference internal" href="#dispatching">Dispatching</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#artifacts">Artifacts</a></li>
+<li><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 
           </div>
