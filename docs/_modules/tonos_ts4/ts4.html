@@ -188,11 +188,11 @@
 
 <span class="n">G_ABI_FIXER</span>     <span class="o">=</span> <span class="kc">None</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## (string) Returns current version of TestSuite4</span>
 <span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">__version__</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Resets entire TS4 state. Useful when starting new testset</span>
 <span class="k">def</span> <span class="nf">reset_all</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">QUEUE</span><span class="p">,</span> <span class="n">EVENTS</span><span class="p">,</span> <span class="n">ALL_MESSAGES</span><span class="p">,</span> <span class="n">NICKNAMES</span>
     <span class="n">core</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>
@@ -219,10 +219,16 @@
 <span class="k">def</span> <span class="nf">yellow</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>    <span class="k">return</span> <span class="n">colorize</span><span class="p">(</span><span class="n">BColors</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">white</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>     <span class="k">return</span> <span class="n">colorize</span><span class="p">(</span><span class="n">BColors</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span>    <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 
-<span class="c1"># Class representing blockchain message</span>
+
 <div class="viewcode-block" id="Msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg">[docs]</a><span class="k">class</span> <span class="nc">Msg</span><span class="p">:</span>
-    <span class="c1"># data: Dictonary with message data</span>
+    <span class="sd">"""The :class:`Msg &lt;Msg&gt;` object, which representing blockchain message.</span>
+<span class="sd">    """</span>
+
 <div class="viewcode-block" id="Msg.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">"""Constructs Msg object.</span>
+
+<span class="sd">        :param data: Dictionary with message data</span>
+<span class="sd">        """</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
         <span class="c1"># print(data)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span>       <span class="o">=</span> <span class="n">data</span>
@@ -248,43 +254,83 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">value</span>   <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounced</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'bounced'</span><span class="p">]</span></div>
 
-    <span class="c1"># Check if a given message is one of requested types.</span>
-    <span class="k">def</span> <span class="nf">is_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type1</span><span class="p">,</span> <span class="n">type2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type3</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type4</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type5</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="c1"># type1: string - A name of desired type</span>
-        <span class="c1"># type2: optional/string - A name of desired type</span>
-        <span class="c1"># ...</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="n">type1</span><span class="p">,</span> <span class="n">type2</span><span class="p">,</span> <span class="n">type3</span><span class="p">,</span> <span class="n">type4</span><span class="p">,</span> <span class="n">type5</span><span class="p">]</span>
-    <span class="c1"># Check if a given message is one of requested types.</span>
-    <span class="k">def</span> <span class="nf">is_type_in</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">):</span>
-        <span class="c1"># types [list of strings]: a list of type names</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">types</span>
-    <span class="c1"># Checks if a given message is of type "answer".</span>
-    <span class="k">def</span> <span class="nf">is_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="c1"># method: (Optional) Desired name of a function answered.</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span>
-    <span class="c1"># Checks if a given message is of type "call".</span>
-    <span class="k">def</span> <span class="nf">is_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="c1"># method: (Optional) Desired name of a function called.</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'call'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span>
-    <span class="c1"># Checks if a given message is of type "empty".</span>
-    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'empty'</span><span class="p">)</span>
-    <span class="c1"># Checks if a given message is of type "event".</span>
-    <span class="k">def</span> <span class="nf">is_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="c1"># name: Desired name of event to check.</span>
-        <span class="c1"># src: Desired source address of event to check.</span>
-        <span class="c1"># dst: Desired destination address of event to check.</span>
+<div class="viewcode-block" id="Msg.is_type"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_type">[docs]</a>    <span class="k">def</span> <span class="nf">is_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type1</span><span class="p">,</span> <span class="n">type2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type3</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type4</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">type5</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""Checks if a given message is one of requested types.</span>
+
+<span class="sd">        :param str type1: A name of desired type</span>
+<span class="sd">        :param str type2: optional - A name of desired type</span>
+<span class="sd">        :param str type3: optional - A name of desired type</span>
+<span class="sd">        :param str type4: optional - A name of desired type</span>
+<span class="sd">        :param str type5: optional - A name of desired type</span>
+<span class="sd">        :return: Result of check</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">[</span><span class="n">type1</span><span class="p">,</span> <span class="n">type2</span><span class="p">,</span> <span class="n">type3</span><span class="p">,</span> <span class="n">type4</span><span class="p">,</span> <span class="n">type5</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Msg.is_type_in"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_type_in">[docs]</a>    <span class="k">def</span> <span class="nf">is_type_in</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">types</span><span class="p">):</span>
+        <span class="sd">"""Checks if a given message is one of requested types.</span>
+
+<span class="sd">        :param list types: A list of strings of type names</span>
+<span class="sd">        :return: Result of check</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">types</span></div>
+
+<div class="viewcode-block" id="Msg.is_answer"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_answer">[docs]</a>    <span class="k">def</span> <span class="nf">is_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""Checks if a given message is of type "answer".</span>
+
+<span class="sd">        :param str method: optional - Desired name of a function answered</span>
+<span class="sd">        :return: Result of check</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Msg.is_call"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_call">[docs]</a>    <span class="k">def</span> <span class="nf">is_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""Checks if a given message is of type "call".</span>
+
+<span class="sd">        :param str method: optional - Desired name of a function called</span>
+<span class="sd">        :return: Result of check</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'call'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Msg.is_empty"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Checks if a given message is of type "empty".</span>
+
+<span class="sd">        :return: Result of check</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'empty'</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Msg.is_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_event">[docs]</a>    <span class="k">def</span> <span class="nf">is_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""Checks if a given message is of type "event".</span>
+
+<span class="sd">        :param str name: Desired name of event to check</span>
+<span class="sd">        :param str src: Desired source address of event to check</span>
+<span class="sd">        :param str dst: Desired destination address of event to check</span>
+<span class="sd">        :return: Result of check</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'event'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">==</span> <span class="n">name</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">src</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">eq</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="s1">'event.src:'</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">dst</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">eq</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dst</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="s1">'event.dst:'</span><span class="p">):</span>
                     <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="c1"># Checks if a given message is of type "unknown".</span>
-    <span class="k">def</span> <span class="nf">is_unknown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">'unknown'</span>
-    <span class="c1"># Dumps message data .</span>
-    <span class="k">def</span> <span class="nf">dump_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dump_struct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Msg.is_unknown"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_unknown">[docs]</a>    <span class="k">def</span> <span class="nf">is_unknown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Checks if a given message is of type "unknown".</span>
+
+<span class="sd">        :return: Result of check</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">'unknown'</span></div>
+
+<div class="viewcode-block" id="Msg.dump_data"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.dump_data">[docs]</a>    <span class="k">def</span> <span class="nf">dump_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Dumps message data.</span>
+
+<span class="sd">        """</span>
+        <span class="n">dump_struct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+
     <span class="c1"># &lt;hide&gt;</span>
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">dump_struct_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
@@ -331,14 +377,6 @@
 <span class="sd">        :rtype: str</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span></div>
-
-<div class="viewcode-block" id="Address.empty"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Address.empty">[docs]</a>    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>            <span class="c1"># TODO!!!: should this duplicate be removed?</span>
-        <span class="sd">"""Checks if address is empty.</span>
-
-<span class="sd">        :return: Result of check</span>
-<span class="sd">        :rtype: bool</span>
-<span class="sd">        """</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">str</span><span class="p">()</span> <span class="o">==</span> <span class="s1">''</span></div>
 
 <div class="viewcode-block" id="Address.is_none"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Address.is_none">[docs]</a>    <span class="k">def</span> <span class="nf">is_none</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Checks if address is None.</span>
@@ -491,25 +529,35 @@
     <span class="k">if</span> <span class="n">time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">core</span><span class="o">.</span><span class="n">set_now</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
 
-<span class="c1">## TODO: add description</span>
-<span class="k">def</span> <span class="nf">set_verbose</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<span class="c1">## Sets verbosity mode. When verbosity is enabled all the messages and some additional stuff is printed to console.</span>
+<span class="c1">## Useful for debugging.</span>
+<span class="k">def</span> <span class="nf">set_verbose</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="c1"># verbose (bool):</span>
     <span class="k">global</span> <span class="n">G_VERBOSE</span>
-    <span class="n">G_VERBOSE</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="n">G_VERBOSE</span> <span class="o">=</span> <span class="n">verbose</span>
 
-<span class="c1">## TODO: add description</span>
-<span class="k">def</span> <span class="nf">set_stop_at_crash</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<span class="c1">## Sets `G_STOP_AT_CRASH` global flag. By default the system stops at the first exception (unexpected exit code) raised</span>
+<span class="c1">## by a contract. Use `expect_ec` parameter if you expected an exception in a given call. When `G_STOP_AT_CRASH` is disbled</span>
+<span class="c1">## the system only warns user and does not stop.</span>
+<span class="k">def</span> <span class="nf">set_stop_at_crash</span><span class="p">(</span><span class="n">do_stop</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">G_STOP_AT_CRASH</span>
-    <span class="n">G_STOP_AT_CRASH</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="n">G_STOP_AT_CRASH</span> <span class="o">=</span> <span class="n">do_stop</span>
 
+<span class="c1">## Helper function to show text colored red in console. Useful when debugging.</span>
 <span class="k">def</span> <span class="nf">verbose_</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="c1"># msg (string): String message to be printed</span>
     <span class="n">verbose</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">show_always</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color_red</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
+<span class="c1">## Helper function to print text message in verbose mode.</span>
 <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">show_always</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">color_red</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># show_always: When enabled forces to show message even when verbose mode if off.</span>
+    <span class="c1"># color_red:</span>
     <span class="k">if</span> <span class="n">G_VERBOSE</span> <span class="ow">or</span> <span class="n">show_always</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">color_red</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="n">red</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
+<span class="c1"># &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">prettify_dict</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">max_str_len</span> <span class="o">=</span> <span class="mi">67</span><span class="p">):</span>
     <span class="n">nd</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -524,6 +572,7 @@
 
     <span class="k">return</span> <span class="n">nd</span>
 
+<span class="c1"># &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">process_actions</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="n">ExecutionResult</span><span class="p">,</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">ExecutionResult</span><span class="p">)</span>
     <span class="n">ec</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span>
@@ -569,44 +618,47 @@
             <span class="n">QUEUE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">gas_used</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Remove first message from the unprocessed messages queue and returns it.</span>
 <span class="k">def</span> <span class="nf">pop_msg</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">QUEUE</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Returns first message from the unprocessed messages queue and leaving the queue untouched.</span>
 <span class="k">def</span> <span class="nf">peek_msg</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">QUEUE</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Remove first event from the unprocessed events queue and returns it.</span>
 <span class="k">def</span> <span class="nf">pop_event</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">EVENTS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Returns first event from the unprocessed events queue and leaving the queue untouched.</span>
 <span class="k">def</span> <span class="nf">peek_event</span><span class="p">():</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">EVENTS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Returns the size of the unprocessed messages queue.</span>
 <span class="k">def</span> <span class="nf">queue_length</span><span class="p">():</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Checks if the unprocessed messages queue is empty and raises an error in the opposite case.</span>
+<span class="c1">## Useful for debugging.</span>
 <span class="k">def</span> <span class="nf">ensure_queue_empty</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">),</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'ensure_queue_empty() -'</span><span class="p">))</span>
 
+<span class="c1">## Dumps messages queue to the console</span>
 <span class="k">def</span> <span class="nf">dump_queue</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">colorize</span><span class="p">(</span><span class="n">BColors</span><span class="o">.</span><span class="n">BOLD</span><span class="p">,</span> <span class="s2">"QUEUE:"</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"  </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QUEUE</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Dispatches all messages in the queue one by one until the queue becomes empty.</span>
 <span class="k">def</span> <span class="nf">dispatch_messages</span><span class="p">():</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">dispatch_one_message</span><span class="p">()</span>
 
+<span class="c1">## &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">dump_all_messages</span><span class="p">():</span>
     <span class="n">prev_time</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">ALL_MESSAGES</span><span class="p">:</span>
@@ -619,14 +671,16 @@
             <span class="n">prev_time</span> <span class="o">=</span> <span class="n">cur_time</span>
         <span class="n">dump_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Register human readable name for a given address. This name is used in verbose output.</span>
 <span class="k">def</span> <span class="nf">register_nickname</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">nickname</span><span class="p">):</span>
+    <span class="c1">## addr (Address)</span>
+    <span class="c1">## nickname (string)</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
     <span class="n">NICKNAMES</span><span class="p">[</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">()]</span> <span class="o">=</span> <span class="n">nickname</span>
 
 <span class="k">def</span> <span class="nf">_format_addr</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">compact</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">addr</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">addr</span><span class="o">.</span><span class="n">is_none</span><span class="p">():</span>
         <span class="k">return</span> <span class="s1">'addr_none'</span>
     <span class="n">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">()</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">addr</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
@@ -660,8 +714,11 @@
         <span class="n">ttt</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"&gt; "</span> <span class="o">+</span> <span class="n">green</span><span class="p">(</span><span class="n">ttt</span><span class="p">))</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Takes first unprocessed message from the queue and dispatches it.</span>
+<span class="c1">## Use `expect_ec` parameter if you expect non-zero exit code.</span>
 <span class="k">def</span> <span class="nf">dispatch_one_message</span><span class="p">(</span><span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># expect_ec (int32):</span>
+    <span class="c1"># returns gas</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">pop_msg</span><span class="p">()</span>
     <span class="n">ALL_MESSAGES</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="c1"># if is_method_call(msg, 'onRoundComplete'):</span>
@@ -670,7 +727,7 @@
     <span class="n">dump2</span> <span class="o">=</span> <span class="n">G_MSG_FILTER</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">G_MSG_FILTER</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">dump1</span> <span class="ow">or</span> <span class="n">dump2</span><span class="p">:</span>
         <span class="n">dump_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">dst</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">dst</span><span class="o">.</span><span class="n">is_none</span><span class="p">():</span>
         <span class="c1"># TODO: a getter's reply. Add a test for that</span>
         <span class="k">return</span>
     <span class="c1"># if msg['id'] == 2050: core.set_trace(True)</span>
@@ -687,6 +744,7 @@
     <span class="k">if</span> <span class="nb">filter</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span> <span class="nb">filter</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">G_MSG_FILTER</span> <span class="o">=</span> <span class="nb">filter</span>
 
+<span class="c1">## Decodes integer value from hex string. Helper function useful when decoding data from contracts.</span>
 <span class="k">def</span> <span class="nf">decode_int</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'0x'</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'0x'</span><span class="p">,</span> <span class="s1">''</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
@@ -745,7 +803,7 @@
     <span class="n">verbose_</span><span class="p">(</span><span class="s2">"Unsupported type '</span><span class="si">{}</span><span class="s2">'"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">value</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Generates random keypair</span>
 <span class="k">def</span> <span class="nf">make_keypair</span><span class="p">():</span>
     <span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">make_keypair</span><span class="p">()</span>
     <span class="n">public_key</span> <span class="o">=</span> <span class="s1">'0x'</span> <span class="o">+</span> <span class="n">public_key</span>
@@ -768,18 +826,18 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="n">red</span><span class="p">(</span><span class="s1">'exp: </span><span class="si">{}</span><span class="s1">, got: </span><span class="si">{}</span><span class="s1">.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span> <span class="o">+</span> <span class="n">xtra</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">dismiss</span> <span class="k">else</span> <span class="kc">False</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Sets the directory where the system will look for compiled contracts.</span>
 <span class="k">def</span> <span class="nf">set_tests_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">G_TESTS_PATH</span>
     <span class="n">G_TESTS_PATH</span> <span class="o">=</span> <span class="n">path</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Converts string to hex representations.</span>
 <span class="k">def</span> <span class="nf">str2bytes</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s1">'Expected string got </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="n">ss</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">()))[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">ss</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Decodes utf-8 string from hex representation</span>
 <span class="k">def</span> <span class="nf">bytes2str</span><span class="p">(</span><span class="n">b</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
 
@@ -802,26 +860,28 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">dump_struct_str</span><span class="p">(</span><span class="n">struct</span><span class="p">))</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="k">def</span> <span class="nf">_make_path</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ext</span><span class="p">):</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
+        <span class="n">fn</span> <span class="o">+=</span> <span class="n">ext</span>
+    <span class="k">return</span> <span class="n">fn</span>
+
+<span class="c1">## Loads a compiled contract image (`.tvc`) with a given name.</span>
 <span class="k">def</span> <span class="nf">load_tvc</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.tvc'</span><span class="p">):</span>
-        <span class="n">fn</span> <span class="o">+=</span> <span class="s1">'.tvc'</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'.tvc'</span><span class="p">)</span>
     <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Loads contract code cell from a compiled contract image with a given name.</span>
+<span class="c1">## returns cell encoded to string</span>
 <span class="k">def</span> <span class="nf">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.tvc'</span><span class="p">):</span>
-        <span class="n">fn</span> <span class="o">+=</span> <span class="s1">'.tvc'</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'.tvc'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">load_code_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Loads contract data cell from a compiled contract image with a given name.</span>
+<span class="c1">## returns cell encoded to string</span>
 <span class="k">def</span> <span class="nf">load_data_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.tvc'</span><span class="p">):</span>
-        <span class="n">fn</span> <span class="o">+=</span> <span class="s1">'.tvc'</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">'.tvc'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">load_data_cell</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">grams</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -834,19 +894,20 @@
     <span class="n">xtra</span> <span class="o">=</span> <span class="s2">", diff = </span><span class="si">{}</span><span class="s2">g (</span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grams</span><span class="p">(</span><span class="n">diff</span><span class="p">),</span> <span class="n">diff</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">expected</span><span class="p">),</span> <span class="n">got</span><span class="p">,</span> <span class="n">xtra</span> <span class="o">=</span> <span class="n">xtra</span><span class="p">,</span> <span class="n">dismiss</span> <span class="o">=</span> <span class="n">dismiss</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Loads an ABI for a given contract without its construction. Useful when some contracts</span>
+<span class="c1">## are deployed indirectly (i.e. from other contracts).</span>
 <span class="k">def</span> <span class="nf">register_abi</span><span class="p">(</span><span class="n">contract_name</span><span class="p">):</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">contract_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.abi.json'</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">contract_name</span><span class="p">,</span> <span class="s1">'.abi.json'</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">G_VERBOSE</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">blue</span><span class="p">(</span><span class="s2">"Loading ABI "</span> <span class="o">+</span> <span class="n">fn</span><span class="p">))</span>
     <span class="n">core</span><span class="o">.</span><span class="n">set_contract_abi</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Sets new ABI for a given contract. Useful when contract code was upgraded.</span>
 <span class="k">def</span> <span class="nf">set_contract_abi</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">new_abi_name</span><span class="p">):</span>
+    <span class="c1"># contract: `BaseContract`</span>
+    <span class="c1"># new_abi_name: string</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">BaseContract</span><span class="p">)</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">new_abi_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.abi.json'</span><span class="p">):</span>
-        <span class="n">fn</span> <span class="o">+=</span> <span class="s1">'.abi.json'</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">new_abi_name</span><span class="p">,</span> <span class="s1">'.abi.json'</span><span class="p">)</span>
     <span class="n">core</span><span class="o">.</span><span class="n">set_contract_abi</span><span class="p">(</span><span class="n">contract</span><span class="o">.</span><span class="n">addr</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="p">(),</span> <span class="n">fn</span><span class="p">)</span>
     <span class="n">contract</span><span class="o">.</span><span class="n">abi_</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
@@ -939,7 +1000,7 @@
 
 <span class="c1">#########################################################################################################</span>
 
-<span class="c1">## TODO: add description</span>
+<span class="c1">## Retrieves the balance of a given address</span>
 <span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="p">):</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">core</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="o">.</span><span class="n">str</span><span class="p">())</span>
@@ -960,7 +1021,7 @@
         <span class="n">balance</span>             <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">GRAM</span><span class="p">,</span>
         <span class="n">nickname</span>            <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Constructs BaseContract class.</span>
+        <span class="sd">"""Constructs BaseContract object.</span>
 
 <span class="sd">        :param name: Name used to load contract's bytecode and ABI</span>
 <span class="sd">        :param ctor_params: Parameters for offchain constructor call</span>
@@ -999,11 +1060,11 @@
             <span class="p">)</span>
             <span class="n">address</span> <span class="o">=</span> <span class="n">Address</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
             <span class="n">just_deployed</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">init2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">just_deployed</span> <span class="o">=</span> <span class="n">just_deployed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">just_deployed</span> <span class="o">=</span> <span class="n">just_deployed</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nickname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">register_nickname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">(),</span> <span class="n">nickname</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">init2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">nickname</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">just_deployed</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_init2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">nickname</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">just_deployed</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name_</span> <span class="o">=</span> <span class="n">name</span>
         <span class="n">ensure_address</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span> <span class="o">=</span> <span class="n">address</span>
@@ -1265,8 +1326,7 @@
 <div class="viewcode-block" id="BaseContract.ticktock"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.ticktock">[docs]</a>    <span class="k">def</span> <span class="nf">ticktock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_tock</span><span class="p">):</span>
         <span class="sd">"""Simulates tick-tock call.</span>
 
-<span class="sd">        :param is_tock: False for Tick and True for Tock</span>
-<span class="sd">        :type is_tock: Boolean</span>
+<span class="sd">        :param bool is_tock: False for Tick and True for Tock</span>
 <span class="sd">        :return: The amount of gas spent on the execution of the transaction</span>
 <span class="sd">        :rtype: num</span>
 <span class="sd">        """</span>

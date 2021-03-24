@@ -204,7 +204,7 @@ for deploying contracts and interaction with deployed contracts.</p>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.BaseContract.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctor_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pubkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nickname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#BaseContract.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.BaseContract.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs BaseContract class.</p>
+<dd><p>Constructs BaseContract object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -367,7 +367,7 @@ if you expect a getter to raise an exception</p></li>
 <dd><p>Simulates tick-tock call.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>is_tock</strong> (<em>Boolean</em>) – False for Tick and True for Tock</p>
+<dd class="field-odd"><p><strong>is_tock</strong> (<em>bool</em>) – False for Tick and True for Tock</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The amount of gas spent on the execution of the transaction</p>
@@ -425,19 +425,6 @@ Address entity.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt id="tonos_ts4.ts4.Address.empty">
-<code class="sig-name descname"><span class="pre">empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Address.empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Address.empty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if address is empty.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Result of check</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
 <dt id="tonos_ts4.ts4.Address.is_none">
 <code class="sig-name descname"><span class="pre">is_none</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Address.is_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Address.is_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if address is None.</p>
@@ -467,10 +454,137 @@ Address entity.</p>
 <dl class="py class">
 <dt id="tonos_ts4.ts4.Msg">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Msg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
+<dd><p>The <a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Msg</span></code></a> object, which representing blockchain message.</p>
+<dl class="py method">
 <dt id="tonos_ts4.ts4.Msg.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dd><p>Constructs Msg object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Dictionary with message data</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.is_type">
+<code class="sig-name descname"><span class="pre">is_type</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type4</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type5</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a given message is one of requested types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type1</strong> (<em>str</em>) – A name of desired type</p></li>
+<li><p><strong>type2</strong> (<em>str</em>) – optional - A name of desired type</p></li>
+<li><p><strong>type3</strong> (<em>str</em>) – optional - A name of desired type</p></li>
+<li><p><strong>type4</strong> (<em>str</em>) – optional - A name of desired type</p></li>
+<li><p><strong>type5</strong> (<em>str</em>) – optional - A name of desired type</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result of check</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.is_type_in">
+<code class="sig-name descname"><span class="pre">is_type_in</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">types</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_type_in"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_type_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a given message is one of requested types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>types</strong> (<em>list</em>) – A list of strings of type names</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result of check</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.is_answer">
+<code class="sig-name descname"><span class="pre">is_answer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_answer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_answer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a given message is of type “answer”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>str</em>) – optional - Desired name of a function answered</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result of check</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.is_call">
+<code class="sig-name descname"><span class="pre">is_call</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a given message is of type “call”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>str</em>) – optional - Desired name of a function called</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result of check</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.is_empty">
+<code class="sig-name descname"><span class="pre">is_empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a given message is of type “empty”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Result of check</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.is_event">
+<code class="sig-name descname"><span class="pre">is_event</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a given message is of type “event”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Desired name of event to check</p></li>
+<li><p><strong>src</strong> (<em>str</em>) – Desired source address of event to check</p></li>
+<li><p><strong>dst</strong> (<em>str</em>) – Desired destination address of event to check</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result of check</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.is_unknown">
+<code class="sig-name descname"><span class="pre">is_unknown</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_unknown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_unknown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a given message is of type “unknown”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Result of check</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tonos_ts4.ts4.Msg.dump_data">
+<code class="sig-name descname"><span class="pre">dump_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.dump_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.dump_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dumps message data.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
