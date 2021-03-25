@@ -430,15 +430,15 @@
         <span class="k">return</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="JsonEncoder"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.JsonEncoder">[docs]</a><span class="k">class</span> <span class="nc">JsonEncoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
-<div class="viewcode-block" id="JsonEncoder.default"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.JsonEncoder.default">[docs]</a>    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">JsonEncoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
         <span class="c1"># verbose_(o)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Address</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">str</span><span class="p">()</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Bytes</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">raw_</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="kc">False</span></div></div>
+            <span class="k">assert</span> <span class="kc">False</span>
 
 <span class="k">class</span> <span class="nc">Params</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
@@ -1330,9 +1330,9 @@
 <div class="viewcode-block" id="BaseContract.decode_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.decode_event">[docs]</a>    <span class="k">def</span> <span class="nf">decode_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_msg</span><span class="p">):</span>
         <span class="sd">"""Experimental feature. Decodes event parameters</span>
 
-<span class="sd">        :param Msg event_msg: An event message</span>
-<span class="sd">        :return: Parameters of event in decoded form</span>
-<span class="sd">        :rtype: dict</span>
+<span class="sd">        :param Msg event_msg: an event message</span>
+<span class="sd">        :return: event parameters in decoded form</span>
+<span class="sd">        :rtype: Params structure</span>
 <span class="sd">        """</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_msg</span><span class="p">,</span> <span class="n">Msg</span><span class="p">),</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">event_msg</span><span class="p">)</span>
 
@@ -1353,7 +1353,7 @@
                 <span class="n">value</span> <span class="o">=</span> <span class="n">decode_json_value1</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
             <span class="n">res</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
-        <span class="k">return</span> <span class="n">res</span></div>
+        <span class="k">return</span> <span class="n">Params</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_dump_event_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">msg</span><span class="o">.</span><span class="n">is_event</span><span class="p">()</span>

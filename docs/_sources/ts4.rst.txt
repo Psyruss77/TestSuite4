@@ -8,7 +8,7 @@ Developer Interface
 This part of the documentation covers all the interfaces of TS4.
 
 Main Interface
-==============
+--------------
 
 .. autofunction:: init
 .. autofunction:: set_verbose
@@ -17,26 +17,26 @@ Main Interface
 .. autofunction:: verbose
 
 Address helpers
----------------
+^^^^^^^^^^^^^^^
 
 .. autofunction:: zero_addr
 .. autofunction:: ensure_address
 
 Account balance
----------------
+^^^^^^^^^^^^^^^
 
 .. autofunction:: ensure_balance
 .. autofunction:: get_balance
 
 Work with ABI
--------------
+^^^^^^^^^^^^^
 
 .. autofunction:: fix_abi
 .. autofunction:: register_abi
 .. autofunction:: set_contract_abi
 
 Messages
---------
+^^^^^^^^
 
 .. autofunction:: pop_msg
 .. autofunction:: peek_msg
@@ -47,19 +47,19 @@ Messages
 .. autofunction:: dump_queue
 
 Dispatching
-^^^^^^^^^^^
+"""""""""""
 
 .. autofunction:: dispatch_one_message
 .. autofunction:: dispatch_messages
 
 Artifacts
----------
+^^^^^^^^^
 .. autofunction:: load_tvc
 .. autofunction:: load_code_cell
 .. autofunction:: load_data_cell
 
 Other
------
+^^^^^
 
 .. autofunction:: register_nickname
 .. autofunction:: decode_int
@@ -70,8 +70,15 @@ Other
 .. autofunction:: bytes2str
 
 Classes
-=======
-
+-------
+BaseContract
+^^^^^^^^^^^^
 .. autoclass:: tonos_ts4.ts4.BaseContract
+
+Address
+^^^^^^^
 .. autoclass:: tonos_ts4.ts4.Address
+
+Msg
+^^^
 .. autoclass:: tonos_ts4.ts4.Msg

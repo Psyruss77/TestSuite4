@@ -119,8 +119,6 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Developer Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#main-interface">Main Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 
 </div>
@@ -138,9 +136,8 @@
         <div class="section" id="module-tonos_ts4.ts4">
 <span id="developer-interface"></span><span id="ts4"></span><h1>Developer Interface<a class="headerlink" href="#module-tonos_ts4.ts4" title="Permalink to this headline">¶</a></h1>
 <p>This part of the documentation covers all the interfaces of TS4.</p>
-</div>
 <div class="section" id="main-interface">
-<h1>Main Interface<a class="headerlink" href="#main-interface" title="Permalink to this headline">¶</a></h1>
+<h2>Main Interface<a class="headerlink" href="#main-interface" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.init">
 <code class="sig-name descname"><span class="pre">init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.init" title="Permalink to this definition">¶</a></dt>
@@ -206,7 +203,7 @@ When <cite>G_STOP_AT_CRASH</cite> is disabled the system only warns user and doe
 </dl>
 </dd></dl>
 <div class="section" id="address-helpers">
-<h2>Address helpers<a class="headerlink" href="#address-helpers" title="Permalink to this headline">¶</a></h2>
+<h3>Address helpers<a class="headerlink" href="#address-helpers" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.zero_addr">
 <code class="sig-name descname"><span class="pre">zero_addr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#zero_addr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.zero_addr" title="Permalink to this definition">¶</a></dt>
@@ -235,7 +232,7 @@ When <cite>G_STOP_AT_CRASH</cite> is disabled the system only warns user and doe
 </dd></dl>
 </div>
 <div class="section" id="account-balance">
-<h2>Account balance<a class="headerlink" href="#account-balance" title="Permalink to this headline">¶</a></h2>
+<h3>Account balance<a class="headerlink" href="#account-balance" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.ensure_balance">
 <code class="sig-name descname"><span class="pre">ensure_balance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">got</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dismiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#ensure_balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.ensure_balance" title="Permalink to this definition">¶</a></dt>
@@ -271,7 +268,7 @@ In case of mismatch prints the difference in a convenient form.</p>
 </dd></dl>
 </div>
 <div class="section" id="work-with-abi">
-<h2>Work with ABI<a class="headerlink" href="#work-with-abi" title="Permalink to this headline">¶</a></h2>
+<h3>Work with ABI<a class="headerlink" href="#work-with-abi" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.fix_abi">
 <code class="sig-name descname"><span class="pre">fix_abi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#fix_abi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.fix_abi" title="Permalink to this definition">¶</a></dt>
@@ -312,7 +309,7 @@ Useful when some contracts are deployed indirectly (i.e. from other contracts).<
 </dd></dl>
 </div>
 <div class="section" id="messages">
-<h2>Messages<a class="headerlink" href="#messages" title="Permalink to this headline">¶</a></h2>
+<h3>Messages<a class="headerlink" href="#messages" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.pop_msg">
 <code class="sig-name descname"><span class="pre">pop_msg</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#pop_msg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.pop_msg" title="Permalink to this definition">¶</a></dt>
@@ -390,7 +387,7 @@ and raises an error in the opposite case. Useful for debugging.</p>
 <dd><p>Dumps messages queue to the console.</p>
 </dd></dl>
 <div class="section" id="dispatching">
-<h3>Dispatching<a class="headerlink" href="#dispatching" title="Permalink to this headline">¶</a></h3>
+<h4>Dispatching<a class="headerlink" href="#dispatching" title="Permalink to this headline">¶</a></h4>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.dispatch_one_message">
 <code class="sig-name descname"><span class="pre">dispatch_one_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expect_ec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#dispatch_one_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.dispatch_one_message" title="Permalink to this definition">¶</a></dt>
@@ -416,7 +413,7 @@ Use <cite>expect_ec</cite> parameter if you expect non-zero exit code.</p>
 </div>
 </div>
 <div class="section" id="artifacts">
-<h2>Artifacts<a class="headerlink" href="#artifacts" title="Permalink to this headline">¶</a></h2>
+<h3>Artifacts<a class="headerlink" href="#artifacts" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.load_tvc">
 <code class="sig-name descname"><span class="pre">load_tvc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#load_tvc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.load_tvc" title="Permalink to this definition">¶</a></dt>
@@ -469,7 +466,7 @@ Returns cell encoded to string</p>
 </dd></dl>
 </div>
 <div class="section" id="other">
-<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<h3>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="tonos_ts4.ts4.register_nickname">
 <code class="sig-name descname"><span class="pre">register_nickname</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nickname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#register_nickname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.register_nickname" title="Permalink to this definition">¶</a></dt>
@@ -582,7 +579,9 @@ When True only error message is shown</p></li>
 </div>
 </div>
 <div class="section" id="classes">
-<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basecontract">
+<h3>BaseContract<a class="headerlink" href="#basecontract" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="tonos_ts4.ts4.BaseContract">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BaseContract</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctor_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pubkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nickname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#BaseContract"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.BaseContract" title="Permalink to this definition">¶</a></dt>
@@ -701,13 +700,13 @@ if you expect a getter to raise an exception</p></li>
 <dd><p>Experimental feature. Decodes event parameters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event_msg</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><em>Msg</em></a>) – An event message</p>
+<dd class="field-odd"><p><strong>event_msg</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><em>Msg</em></a>) – an event message</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Parameters of event in decoded form</p>
+<dd class="field-even"><p>event parameters in decoded form</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
+<dd class="field-odd"><p>Params structure</p>
 </dd>
 </dl>
 </dd></dl>
@@ -783,6 +782,9 @@ if you expect a method to raise an exception</p></li>
 </dl>
 </dd></dl>
 </dd></dl>
+</div>
+<div class="section" id="address">
+<h3>Address<a class="headerlink" href="#address" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="tonos_ts4.ts4.Address">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Address</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Address" title="Permalink to this definition">¶</a></dt>
@@ -838,6 +840,9 @@ Address entity.</p>
 </dl>
 </dd></dl>
 </dd></dl>
+</div>
+<div class="section" id="msg">
+<h3>Msg<a class="headerlink" href="#msg" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="tonos_ts4.ts4.Msg">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Msg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg" title="Permalink to this definition">¶</a></dt>
@@ -975,6 +980,8 @@ Address entity.</p>
 </dd></dl>
 </dd></dl>
 </div>
+</div>
+</div>
 
       </article>
       <footer>
@@ -1022,7 +1029,7 @@ Address entity.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Developer Interface</a></li>
+<li><a class="reference internal" href="#">Developer Interface</a><ul>
 <li><a class="reference internal" href="#main-interface">Main Interface</a><ul>
 <li><a class="reference internal" href="#address-helpers">Address helpers</a></li>
 <li><a class="reference internal" href="#account-balance">Account balance</a></li>
@@ -1035,7 +1042,14 @@ Address entity.</p>
 <li><a class="reference internal" href="#other">Other</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#basecontract">BaseContract</a></li>
+<li><a class="reference internal" href="#address">Address</a></li>
+<li><a class="reference internal" href="#msg">Msg</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
           </div>
