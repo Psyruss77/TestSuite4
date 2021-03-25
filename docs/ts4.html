@@ -38,6 +38,7 @@
   
   }
 </style><link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/ts4.css" />
     <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
   <body dir="">
     
@@ -101,8 +102,8 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   <div class="sidebar-logo-container">
-    <img class="sidebar-logo only-light" src="_static/logo_a.svg" alt="Light Logo"/>
-    <img class="sidebar-logo only-dark" src="_static/logo-b.svg" alt="Dark Logo"/>
+    <img class="sidebar-logo only-light" src="_static/ts4-logo-colored.svg" alt="Light Logo A"/>
+    <img class="sidebar-logo only-dark" src="_static/ts4-logo-colored.svg" alt="Dark Logo B"/>
   </div>
   
   <span class="sidebar-brand-text">TestSuite4 v0.2.0rc1</span>
@@ -202,6 +203,24 @@ When <cite>G_STOP_AT_CRASH</cite> is disabled the system only warns user and doe
 </dd>
 </dl>
 </dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.reset_all">
+<code class="sig-name descname"><span class="pre">reset_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#reset_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.reset_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets entire TS4 state. Useful when starting new testset.</p>
+</dd></dl>
+<dl class="py function">
+<dt id="tonos_ts4.ts4.version">
+<code class="sig-name descname"><span class="pre">version</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current version of TestSuite4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Current version</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 <div class="section" id="address-helpers">
 <h3>Address helpers<a class="headerlink" href="#address-helpers" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
@@ -213,10 +232,10 @@ When <cite>G_STOP_AT_CRASH</cite> is disabled the system only warns user and doe
 <dd class="field-odd"><p><strong>wc</strong> (<em>num</em>) – Workchain ID</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> object</p>
+<dd class="field-even"><p>Object</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>address</p>
+<dd class="field-odd"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address">Address</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -278,7 +297,7 @@ In case of mismatch prints the difference in a convenient form.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Contract name</p></li>
 <li><p><strong>abi</strong> (<em>dict</em>) – Contract ABI</p></li>
-<li><p><strong>callback</strong> – Transformation function called for each node.</p></li>
+<li><p><strong>callback</strong> – Transformation function called for each node</p></li>
 </ul>
 </dd>
 </dl>
@@ -316,7 +335,7 @@ Useful when some contracts are deployed indirectly (i.e. from other contracts).<
 <dd><p>Removes first message from the unprocessed messages queue and returns it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Msg</span></code></a> object</p>
+<dd class="field-odd"><p>Object</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg">Msg</a></p>
@@ -329,7 +348,7 @@ Useful when some contracts are deployed indirectly (i.e. from other contracts).<
 <dd><p>Returns first message from the unprocessed messages queue and leaving the queue untouched.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Msg</span></code></a> object</p>
+<dd class="field-odd"><p>Object</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg">Msg</a></p>
@@ -342,7 +361,7 @@ Useful when some contracts are deployed indirectly (i.e. from other contracts).<
 <dd><p>Removes first event from the unprocessed events queue and returns it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Msg</span></code></a> object</p>
+<dd class="field-odd"><p>Object</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg">Msg</a></p>
@@ -355,7 +374,7 @@ Useful when some contracts are deployed indirectly (i.e. from other contracts).<
 <dd><p>Returns first event from the unprocessed events queue and leaving the queue untouched.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Msg</span></code></a> object</p>
+<dd class="field-odd"><p>Object</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg">Msg</a></p>
@@ -475,7 +494,7 @@ This name is used in verbose output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – A address account</p></li>
+<li><p><strong>addr</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – An address of the account</p></li>
 <li><p><strong>nickname</strong> (<em>str</em>) – A nickname for the account</p></li>
 </ul>
 </dd>
@@ -506,7 +525,7 @@ This name is used in verbose output.</p>
 <dd class="field-odd"><p>The key pair</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list</p>
+<dd class="field-even"><p>(str, str)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -518,8 +537,8 @@ Prints the message in case of mismatch, and optionally stops tests execution.</p
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – Expected value</p></li>
-<li><p><strong>v2</strong> – Actual value</p></li>
+<li><p><strong>v1</strong> (<em>Any</em>) – Expected value</p></li>
+<li><p><strong>v2</strong> (<em>Any</em>) – Actual value</p></li>
 <li><p><strong>dismiss</strong> (<em>bool</em>) – When False stops the entire execution in case of mismatch.
 When True only error message is shown</p></li>
 <li><p><strong>msg</strong> (<em>str</em>) – Optional additional message to be printed in case of mismatch</p></li>
@@ -527,7 +546,7 @@ When True only error message is shown</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Сomparison result</p>
+<dd class="field-even"><p>Result of check</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
@@ -599,14 +618,14 @@ for deploying contracts and interaction with deployed contracts.</p>
 If None constructor is not called and can be called with
 separate <cite>call_method()</cite> call (onchain constructed)</p></li>
 <li><p><strong>wc</strong> (<em>num</em>) – workchain_id to deploy contract to</p></li>
-<li><p><strong>address</strong> (<em>Addres</em>) – If this parameter is specified no new contract is created
+<li><p><strong>address</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – If this parameter is specified no new contract is created
 but instead a wrapper for an existing contract is created</p></li>
 <li><p><strong>override_address</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><em>Address</em></a>) – When specified this address will be used for deploying
 the contract. Otherwise the address is generated according to real blockchain rules</p></li>
-<li><p><strong>pubkey</strong> (<em>str</em>) – public key used in contract construction</p></li>
-<li><p><strong>private_key</strong> (<em>str</em>) – private key used to sign construction message</p></li>
-<li><p><strong>balance</strong> (<em>num</em>) – desired contract balance</p></li>
-<li><p><strong>nickname</strong> (<em>str</em>) – nickname of a contract used in verbose output</p></li>
+<li><p><strong>pubkey</strong> (<em>str</em>) – Public key used in contract construction</p></li>
+<li><p><strong>private_key</strong> (<em>str</em>) – Private key used to sign construction message</p></li>
+<li><p><strong>balance</strong> (<em>num</em>) – Desired contract balance</p></li>
+<li><p><strong>nickname</strong> (<em>str</em>) – Nickname of a contract used in verbose output</p></li>
 </ul>
 </dd>
 </dl>
@@ -633,7 +652,7 @@ the contract. Otherwise the address is generated according to real blockchain ru
 <dd class="field-odd"><p>Address of contact</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><cite>Address &lt;Address&gt;</cite></p>
+<dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address">Address</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -646,7 +665,7 @@ the contract. Otherwise the address is generated according to real blockchain ru
 <dd class="field-odd"><p>Address of contact</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><cite>Address &lt;Address&gt;</cite></p>
+<dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address">Address</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -700,13 +719,13 @@ if you expect a getter to raise an exception</p></li>
 <dd><p>Experimental feature. Decodes event parameters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event_msg</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><em>Msg</em></a>) – an event message</p>
+<dd class="field-odd"><p><strong>event_msg</strong> (<a class="reference internal" href="#tonos_ts4.ts4.Msg" title="tonos_ts4.ts4.Msg"><em>Msg</em></a>) – An event message</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>event parameters in decoded form</p>
+<dd class="field-even"><p>Event parameters in decoded form</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Params structure</p>
+<dd class="field-odd"><p>Params</p>
 </dd>
 </dl>
 </dd></dl>
@@ -735,7 +754,7 @@ if you expect a method to raise an exception</p></li>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.BaseContract.call_method_signed">
 <code class="sig-name descname"><span class="pre">call_method_signed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_ec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#BaseContract.call_method_signed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.BaseContract.call_method_signed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls a given method using contract’s private key</p>
+<dd><p>Calls a given method using contract’s private key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -777,7 +796,7 @@ if you expect a method to raise an exception</p></li>
 <dd class="field-odd"><p>Account keypair</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>tuple</p>
+<dd class="field-even"><p>(str, str)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -793,7 +812,7 @@ Address entity.</p>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.Address.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Address.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Address.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs <cite>Address</cite> object.</p>
+<dd><p>Constructs <a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>addr</strong> (<em>str</em>) – A string represented address or None</p>
@@ -832,7 +851,7 @@ Address entity.</p>
 <dd><p>Adds workchain_id if it was missing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a> object</p>
+<dd class="field-odd"><p>Object</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#tonos_ts4.ts4.Address" title="tonos_ts4.ts4.Address">Address</a></p>
@@ -898,7 +917,7 @@ Address entity.</p>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.Msg.is_answer">
 <code class="sig-name descname"><span class="pre">is_answer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_answer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_answer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if a given message is of type “answer”.</p>
+<dd><p>Checks if a given message is of an <em>answer</em> type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>method</strong> (<em>str</em>) – optional - Desired name of a function answered</p>
@@ -914,7 +933,7 @@ Address entity.</p>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.Msg.is_call">
 <code class="sig-name descname"><span class="pre">is_call</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_call" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if a given message is of type “call”.</p>
+<dd><p>Checks if a given message is of a <em>call</em> type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>method</strong> (<em>str</em>) – optional - Desired name of a function called</p>
@@ -930,7 +949,7 @@ Address entity.</p>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.Msg.is_empty">
 <code class="sig-name descname"><span class="pre">is_empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_empty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if a given message is of type “empty”.</p>
+<dd><p>Checks if a given message is of an <em>empty</em> type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Result of check</p>
@@ -943,7 +962,7 @@ Address entity.</p>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.Msg.is_event">
 <code class="sig-name descname"><span class="pre">is_event</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if a given message is of type “event”.</p>
+<dd><p>Checks if a given message is of an <em>event</em> type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -963,7 +982,7 @@ Address entity.</p>
 <dl class="py method">
 <dt id="tonos_ts4.ts4.Msg.is_unknown">
 <code class="sig-name descname"><span class="pre">is_unknown</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tonos_ts4/ts4.html#Msg.is_unknown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tonos_ts4.ts4.Msg.is_unknown" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if a current message is of type “unknown”.</p>
+<dd><p>Checks if a current message is of an <em>unknown</em> type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Result of check</p>

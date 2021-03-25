@@ -38,6 +38,7 @@
   
   }
 </style><link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/ts4.css" />
     <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
   <body dir="">
     
@@ -101,8 +102,8 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   <div class="sidebar-logo-container">
-    <img class="sidebar-logo only-light" src="../../_static/logo_a.svg" alt="Light Logo"/>
-    <img class="sidebar-logo only-dark" src="../../_static/logo-b.svg" alt="Dark Logo"/>
+    <img class="sidebar-logo only-light" src="../../_static/ts4-logo-colored.svg" alt="Light Logo A"/>
+    <img class="sidebar-logo only-dark" src="../../_static/ts4-logo-colored.svg" alt="Dark Logo B"/>
   </div>
   
   <span class="sidebar-brand-text">TestSuite4 v0.2.0rc1</span>
@@ -188,18 +189,24 @@
 
 <span class="n">G_ABI_FIXER</span>     <span class="o">=</span> <span class="kc">None</span>
 
-<span class="c1">## (string) Returns current version of TestSuite4</span>
-<span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">__version__</span>
 
-<span class="c1">## Resets entire TS4 state. Useful when starting new testset</span>
-<span class="k">def</span> <span class="nf">reset_all</span><span class="p">():</span>
+<div class="viewcode-block" id="version"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.version">[docs]</a><span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
+    <span class="sd">"""Returns current version of TestSuite4.</span>
+
+<span class="sd">    :return: Current version</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">__version__</span></div>
+
+<div class="viewcode-block" id="reset_all"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.reset_all">[docs]</a><span class="k">def</span> <span class="nf">reset_all</span><span class="p">():</span>
+    <span class="sd">"""Resets entire TS4 state. Useful when starting new testset.</span>
+<span class="sd">    """</span>
     <span class="k">global</span> <span class="n">QUEUE</span><span class="p">,</span> <span class="n">EVENTS</span><span class="p">,</span> <span class="n">ALL_MESSAGES</span><span class="p">,</span> <span class="n">NICKNAMES</span>
     <span class="n">core</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>
     <span class="n">QUEUE</span>           <span class="o">=</span> <span class="p">[]</span>
     <span class="n">EVENTS</span>          <span class="o">=</span> <span class="p">[]</span>
     <span class="n">ALL_MESSAGES</span>    <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">NICKNAMES</span>       <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">NICKNAMES</span>       <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span></div>
 
 
 <span class="k">class</span> <span class="nc">BColors</span><span class="p">:</span>
@@ -223,7 +230,6 @@
 <div class="viewcode-block" id="Msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg">[docs]</a><span class="k">class</span> <span class="nc">Msg</span><span class="p">:</span>
     <span class="sd">"""The :class:`Msg &lt;Msg&gt;` object, which representing blockchain message.</span>
 <span class="sd">    """</span>
-
 <div class="viewcode-block" id="Msg.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">"""Constructs Msg object.</span>
 
@@ -277,7 +283,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">types</span></div>
 
 <div class="viewcode-block" id="Msg.is_answer"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_answer">[docs]</a>    <span class="k">def</span> <span class="nf">is_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Checks if a given message is of type "answer".</span>
+        <span class="sd">"""Checks if a given message is of an *answer* type.</span>
 
 <span class="sd">        :param str method: optional - Desired name of a function answered</span>
 <span class="sd">        :return: Result of check</span>
@@ -286,7 +292,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'answer'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Msg.is_call"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_call">[docs]</a>    <span class="k">def</span> <span class="nf">is_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Checks if a given message is of type "call".</span>
+        <span class="sd">"""Checks if a given message is of a *call* type.</span>
 
 <span class="sd">        :param str method: optional - Desired name of a function called</span>
 <span class="sd">        :return: Result of check</span>
@@ -295,7 +301,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'call'</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="n">method</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Msg.is_empty"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Checks if a given message is of type "empty".</span>
+        <span class="sd">"""Checks if a given message is of an *empty* type.</span>
 
 <span class="sd">        :return: Result of check</span>
 <span class="sd">        :rtype: bool</span>
@@ -303,7 +309,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="s1">'empty'</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Msg.is_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_event">[docs]</a>    <span class="k">def</span> <span class="nf">is_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Checks if a given message is of type "event".</span>
+        <span class="sd">"""Checks if a given message is of an *event* type.</span>
 
 <span class="sd">        :param str name: Desired name of event to check</span>
 <span class="sd">        :param str src: Desired source address of event to check</span>
@@ -318,7 +324,7 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Msg.is_unknown"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.is_unknown">[docs]</a>    <span class="k">def</span> <span class="nf">is_unknown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Checks if a current message is of type "unknown".</span>
+        <span class="sd">"""Checks if a current message is of an *unknown* type.</span>
 
 <span class="sd">        :return: Result of check</span>
 <span class="sd">        :rtype: bool</span>
@@ -330,7 +336,6 @@
 <span class="sd">        """</span>
         <span class="n">dump_struct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
 
-    <span class="c1"># &lt;hide&gt;</span>
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">dump_struct_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
 
@@ -339,7 +344,7 @@
 <span class="sd">    Address entity.</span>
 <span class="sd">    """</span>
 <div class="viewcode-block" id="Address.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Address.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
-        <span class="sd">"""Constructs `Address` object.</span>
+        <span class="sd">"""Constructs :class:`Address &lt;Address&gt;` object.</span>
 
 <span class="sd">        :param str addr: A string represented address or None</span>
 <span class="sd">        """</span>
@@ -363,7 +368,7 @@
         <span class="sd">"""Сompares the object with the passed value.</span>
 
 <span class="sd">        :param Address other: Address object</span>
-<span class="sd">        :return: Comparison result</span>
+<span class="sd">        :return: Result of check</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        """</span>
         <span class="n">ensure_address</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
@@ -388,7 +393,7 @@
 <div class="viewcode-block" id="Address.fix_wc"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Address.fix_wc">[docs]</a>    <span class="k">def</span> <span class="nf">fix_wc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Adds workchain_id if it was missing.</span>
 
-<span class="sd">        :return: :class:`Address &lt;Address&gt;` object</span>
+<span class="sd">        :return: Object</span>
 <span class="sd">        :rtype: Address</span>
 <span class="sd">        """</span>
         <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="s1">':'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -399,8 +404,8 @@
     <span class="sd">"""Creates a zero address instance in a given workchain.</span>
 
 <span class="sd">    :param num wc: Workchain ID</span>
-<span class="sd">    :return: :class:`Address &lt;Address&gt;` object</span>
-<span class="sd">    :rtype: address</span>
+<span class="sd">    :return: Object</span>
+<span class="sd">    :rtype: Address</span>
 <span class="sd">    """</span>
     <span class="n">addr</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">:</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wc</span><span class="p">,</span> <span class="s1">'0'</span><span class="o">*</span><span class="mi">64</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span></div>
@@ -567,7 +572,6 @@
             <span class="n">msg</span> <span class="o">=</span> <span class="n">red</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
-<span class="c1"># &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">prettify_dict</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">max_str_len</span> <span class="o">=</span> <span class="mi">67</span><span class="p">):</span>
     <span class="n">nd</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -582,7 +586,6 @@
 
     <span class="k">return</span> <span class="n">nd</span>
 
-<span class="c1"># &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">process_actions</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="n">ExecutionResult</span><span class="p">,</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">ExecutionResult</span><span class="p">)</span>
     <span class="n">ec</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span>
@@ -631,7 +634,7 @@
 <div class="viewcode-block" id="pop_msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.pop_msg">[docs]</a><span class="k">def</span> <span class="nf">pop_msg</span><span class="p">():</span>
     <span class="sd">"""Removes first message from the unprocessed messages queue and returns it.</span>
 
-<span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
+<span class="sd">    :return: Object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -640,7 +643,7 @@
 <div class="viewcode-block" id="peek_msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.peek_msg">[docs]</a><span class="k">def</span> <span class="nf">peek_msg</span><span class="p">():</span>
     <span class="sd">"""Returns first message from the unprocessed messages queue and leaving the queue untouched.</span>
 
-<span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
+<span class="sd">    :return: Object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -649,7 +652,7 @@
 <div class="viewcode-block" id="pop_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.pop_event">[docs]</a><span class="k">def</span> <span class="nf">pop_event</span><span class="p">():</span>
     <span class="sd">"""Removes first event from the unprocessed events queue and returns it.</span>
 
-<span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
+<span class="sd">    :return: Object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -658,7 +661,7 @@
 <div class="viewcode-block" id="peek_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.peek_event">[docs]</a><span class="k">def</span> <span class="nf">peek_event</span><span class="p">():</span>
     <span class="sd">"""Returns first event from the unprocessed events queue and leaving the queue untouched.</span>
 
-<span class="sd">    :return: :class:`Msg &lt;Msg&gt;` object</span>
+<span class="sd">    :return: Object</span>
 <span class="sd">    :rtype: Msg</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">EVENTS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -691,7 +694,6 @@
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">dispatch_one_message</span><span class="p">()</span></div>
 
-<span class="c1">## &lt;hide&gt;</span>
 <span class="k">def</span> <span class="nf">dump_all_messages</span><span class="p">():</span>
     <span class="n">prev_time</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">ALL_MESSAGES</span><span class="p">:</span>
@@ -709,7 +711,7 @@
     <span class="sd">"""Registers human readable name for a given address. </span>
 <span class="sd">    This name is used in verbose output.</span>
 
-<span class="sd">    :param Address addr: A address account</span>
+<span class="sd">    :param Address addr: An address of the account</span>
 <span class="sd">    :param str nickname: A nickname for the account</span>
 <span class="sd">    """</span>
     <span class="n">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
@@ -852,7 +854,7 @@
     <span class="sd">"""Generates random keypair.</span>
 
 <span class="sd">    :return: The key pair</span>
-<span class="sd">    :rtype: list</span>
+<span class="sd">    :rtype: (str, str)</span>
 <span class="sd">    """</span>
     <span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">make_keypair</span><span class="p">()</span>
     <span class="n">public_key</span> <span class="o">=</span> <span class="s1">'0x'</span> <span class="o">+</span> <span class="n">public_key</span>
@@ -868,13 +870,13 @@
     <span class="sd">"""Helper function to check that two values are equal.</span>
 <span class="sd">    Prints the message in case of mismatch, and optionally stops tests execution.</span>
 
-<span class="sd">    :param v1: Expected value</span>
-<span class="sd">    :param v2: Actual value</span>
+<span class="sd">    :param Any v1: Expected value</span>
+<span class="sd">    :param Any v2: Actual value</span>
 <span class="sd">    :param bool dismiss: When False stops the entire execution in case of mismatch.</span>
 <span class="sd">        When True only error message is shown</span>
 <span class="sd">    :param str msg: Optional additional message to be printed in case of mismatch</span>
 <span class="sd">    :param str xtra: Another option additional message to be printed</span>
-<span class="sd">    :return: Сomparison result</span>
+<span class="sd">    :return: Result of check</span>
 <span class="sd">    :rtype: bool</span>
 <span class="sd">    """</span>
     <span class="k">if</span> <span class="n">v1</span> <span class="o">==</span> <span class="n">v2</span><span class="p">:</span>
@@ -1096,7 +1098,7 @@
 
 <span class="sd">    :param str name: Contract name</span>
 <span class="sd">    :param dict abi: Contract ABI</span>
-<span class="sd">    :param callback: Transformation function called for each node.</span>
+<span class="sd">    :param callback: Transformation function called for each node</span>
 <span class="sd">    """</span>
     <span class="n">traveller</span> <span class="o">=</span> <span class="n">AbiTraversalHelper</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">abi</span><span class="p">)</span>
     <span class="n">traveller</span><span class="o">.</span><span class="n">travel_fields</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span></div>
@@ -1137,14 +1139,14 @@
 <span class="sd">            If None constructor is not called and can be called with</span>
 <span class="sd">            separate `call_method()` call (onchain constructed)</span>
 <span class="sd">        :param num wc: workchain_id to deploy contract to</span>
-<span class="sd">        :param Addres address: If this parameter is specified no new contract is created</span>
+<span class="sd">        :param Address address: If this parameter is specified no new contract is created</span>
 <span class="sd">            but instead a wrapper for an existing contract is created</span>
 <span class="sd">        :param Address override_address: When specified this address will be used for deploying</span>
 <span class="sd">            the contract. Otherwise the address is generated according to real blockchain rules</span>
-<span class="sd">        :param str pubkey: public key used in contract construction</span>
-<span class="sd">        :param str private_key: private key used to sign construction message</span>
-<span class="sd">        :param num balance: desired contract balance</span>
-<span class="sd">        :param str nickname: nickname of a contract used in verbose output</span>
+<span class="sd">        :param str pubkey: Public key used in contract construction</span>
+<span class="sd">        :param str private_key: Private key used to sign construction message</span>
+<span class="sd">        :param num balance: Desired contract balance</span>
+<span class="sd">        :param str nickname: Nickname of a contract used in verbose output</span>
 <span class="sd">        """</span>
         <span class="n">full_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="n">just_deployed</span> <span class="o">=</span> <span class="kc">False</span>
@@ -1201,7 +1203,7 @@
         <span class="sd">"""Returns address of a given contact.</span>
 
 <span class="sd">        :return: Address of contact</span>
-<span class="sd">        :rtype: `Address &lt;Address&gt;`</span>
+<span class="sd">        :rtype: Address</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span></div>
 
@@ -1209,7 +1211,7 @@
         <span class="sd">"""Returns address of a given contact. Shorter version of `address()`.</span>
 
 <span class="sd">        :return: Address of contact</span>
-<span class="sd">        :rtype: `Address &lt;Address&gt;`</span>
+<span class="sd">        :rtype: Address</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span></div>
 
@@ -1330,9 +1332,9 @@
 <div class="viewcode-block" id="BaseContract.decode_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.decode_event">[docs]</a>    <span class="k">def</span> <span class="nf">decode_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_msg</span><span class="p">):</span>
         <span class="sd">"""Experimental feature. Decodes event parameters</span>
 
-<span class="sd">        :param Msg event_msg: an event message</span>
-<span class="sd">        :return: event parameters in decoded form</span>
-<span class="sd">        :rtype: Params structure</span>
+<span class="sd">        :param Msg event_msg: An event message</span>
+<span class="sd">        :return: Event parameters in decoded form</span>
+<span class="sd">        :rtype: Params</span>
 <span class="sd">        """</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_msg</span><span class="p">,</span> <span class="n">Msg</span><span class="p">),</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">event_msg</span><span class="p">)</span>
 
@@ -1423,7 +1425,7 @@
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_answer</span><span class="p">(</span><span class="n">answer</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">DecodingParams</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="BaseContract.call_method_signed"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.call_method_signed">[docs]</a>    <span class="k">def</span> <span class="nf">call_method_signed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="sd">"""Calls a given method using contract's private key</span>
+        <span class="sd">"""Calls a given method using contract's private key.</span>
 
 <span class="sd">        :param str method: Name of a method to be called</span>
 <span class="sd">        :param dict params: A dictionary with parameters for calling a contract function</span>
@@ -1456,7 +1458,7 @@
         <span class="sd">"""Returns keypair assigned to the contract.</span>
 
 <span class="sd">        :return: Account keypair</span>
-<span class="sd">        :rtype: tuple</span>
+<span class="sd">        :rtype: (str, str)</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">private_key_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">public_key_</span><span class="p">)</span></div></div>
 </pre></div>
