@@ -228,7 +228,7 @@
 
 
 <div class="viewcode-block" id="Msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg">[docs]</a><span class="k">class</span> <span class="nc">Msg</span><span class="p">:</span>
-    <span class="sd">"""The :class:`Msg &lt;Msg&gt;` object, which representing blockchain message.</span>
+    <span class="sd">"""The :class:`Msg &lt;Msg&gt;` object, which represents a blockchain message.</span>
 <span class="sd">    """</span>
 <div class="viewcode-block" id="Msg.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Msg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">"""Constructs Msg object.</span>
@@ -346,7 +346,7 @@
 <div class="viewcode-block" id="Address.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Address.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
         <span class="sd">"""Constructs :class:`Address &lt;Address&gt;` object.</span>
 
-<span class="sd">        :param str addr: A string represented address or None</span>
+<span class="sd">        :param str addr: A string representing the address or None</span>
 <span class="sd">        """</span>
         <span class="k">if</span> <span class="n">addr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">addr</span> <span class="o">=</span> <span class="s1">''</span>
@@ -359,11 +359,12 @@
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Used by print().</span>
 
-<span class="sd">        :return: A string represented address</span>
+<span class="sd">        :return: A string representing the address</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="s1">'Addr(</span><span class="si">{}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">addr_</span><span class="p">)</span>
-
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"Address('</span><span class="si">{}</span><span class="s2">')"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">addr_</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">"""Сompares the object with the passed value.</span>
 
@@ -377,7 +378,7 @@
 <div class="viewcode-block" id="Address.str"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.Address.str">[docs]</a>    <span class="k">def</span> <span class="nf">str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Returns string representing given address.</span>
 
-<span class="sd">        :return: A string represented address</span>
+<span class="sd">        :return: A string representing the address</span>
 <span class="sd">        :rtype: str</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span></div>
@@ -411,7 +412,7 @@
     <span class="k">return</span> <span class="n">Address</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ensure_address"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.ensure_address">[docs]</a><span class="k">def</span> <span class="nf">ensure_address</span><span class="p">(</span><span class="n">addr</span><span class="p">):</span>
-    <span class="sd">"""Raises an error is a given object is not :class:`Address &lt;Address&gt;` class.</span>
+    <span class="sd">"""Raises an error if a given object is not of :class:`Address &lt;Address&gt;` class.</span>
 
 <span class="sd">    :param Address addr: Object of class Address</span>
 <span class="sd">    """</span>
@@ -515,7 +516,7 @@
 
 
 <div class="viewcode-block" id="init"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.init">[docs]</a><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">"""Initilizes the library.</span>
+    <span class="sd">"""Initializes the library.</span>
 
 <span class="sd">    :param str path: Directory where the artifacts of the used contracts are located</span>
 <span class="sd">    :param bool verbose: Toggle to print additional execution info</span>
@@ -564,8 +565,8 @@
     <span class="sd">"""Helper function to print text message in verbose mode.</span>
 
 <span class="sd">    :param str msg: String message to be printed</span>
-<span class="sd">    :param bool show_always: When enabled forces to show message even when verbose mode if off</span>
-<span class="sd">    :param bool color_red: Emphasise of the message in color</span>
+<span class="sd">    :param bool show_always: When enabled forces to show message even when verbose mode is off</span>
+<span class="sd">    :param bool color_red: Emphasize the message in color</span>
 <span class="sd">    """</span>
     <span class="k">if</span> <span class="n">G_VERBOSE</span> <span class="ow">or</span> <span class="n">show_always</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">color_red</span><span class="p">:</span>
@@ -641,7 +642,7 @@
     <span class="k">return</span> <span class="n">QUEUE</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="peek_msg"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.peek_msg">[docs]</a><span class="k">def</span> <span class="nf">peek_msg</span><span class="p">():</span>
-    <span class="sd">"""Returns first message from the unprocessed messages queue and leaving the queue untouched.</span>
+    <span class="sd">"""Returns first message from the unprocessed messages queue and leaves the queue unchanged.</span>
 
 <span class="sd">    :return: Object</span>
 <span class="sd">    :rtype: Msg</span>
@@ -659,7 +660,7 @@
     <span class="k">return</span> <span class="n">EVENTS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="peek_event"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.peek_event">[docs]</a><span class="k">def</span> <span class="nf">peek_event</span><span class="p">():</span>
-    <span class="sd">"""Returns first event from the unprocessed events queue and leaving the queue untouched.</span>
+    <span class="sd">"""Returns first event from the unprocessed events queue and leaves the queue unchanged.</span>
 
 <span class="sd">    :return: Object</span>
 <span class="sd">    :rtype: Msg</span>
@@ -677,7 +678,7 @@
 
 <div class="viewcode-block" id="ensure_queue_empty"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.ensure_queue_empty">[docs]</a><span class="k">def</span> <span class="nf">ensure_queue_empty</span><span class="p">():</span>
     <span class="sd">"""Checks if the unprocessed messages queue is empty</span>
-<span class="sd">    and raises an error in the opposite case. Useful for debugging.</span>
+<span class="sd">    and raises an error if it is not. Useful for debugging.</span>
 <span class="sd">    """</span>
     <span class="k">assert</span> <span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">),</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'ensure_queue_empty() -'</span><span class="p">))</span></div>
 
@@ -688,10 +689,16 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"  </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">QUEUE</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span></div>
 
-<div class="viewcode-block" id="dispatch_messages"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.dispatch_messages">[docs]</a><span class="k">def</span> <span class="nf">dispatch_messages</span><span class="p">():</span>
+<div class="viewcode-block" id="dispatch_messages"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.dispatch_messages">[docs]</a><span class="k">def</span> <span class="nf">dispatch_messages</span><span class="p">(</span><span class="n">callback</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">"""Dispatches all messages in the queue one by one until the queue becomes empty.</span>
+
+<span class="sd">    :param callback: Callback to be called to each processed message. </span>
+<span class="sd">        If callback returns False the given message is skipped.</span>
 <span class="sd">    """</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">QUEUE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">callback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">callback</span><span class="p">(</span><span class="n">peek_msg</span><span class="p">())</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">pop_msg</span><span class="p">()</span>
+            <span class="k">continue</span>
         <span class="n">dispatch_one_message</span><span class="p">()</span></div>
 
 <span class="k">def</span> <span class="nf">dump_all_messages</span><span class="p">():</span>
@@ -875,7 +882,7 @@
 <span class="sd">    :param bool dismiss: When False stops the entire execution in case of mismatch.</span>
 <span class="sd">        When True only error message is shown</span>
 <span class="sd">    :param str msg: Optional additional message to be printed in case of mismatch</span>
-<span class="sd">    :param str xtra: Another option additional message to be printed</span>
+<span class="sd">    :param str xtra: Another optional additional message to be printed</span>
 <span class="sd">    :return: Result of check</span>
 <span class="sd">    :rtype: bool</span>
 <span class="sd">    """</span>
@@ -892,7 +899,7 @@
 <div class="viewcode-block" id="set_tests_path"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.set_tests_path">[docs]</a><span class="k">def</span> <span class="nf">set_tests_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="sd">"""Sets the directory where the system will look for compiled contracts.</span>
 
-<span class="sd">    :param str path: The path to contracts artifacts</span>
+<span class="sd">    :param str path: The path to contract artifacts</span>
 <span class="sd">    """</span>
     <span class="k">global</span> <span class="n">G_TESTS_PATH</span>
     <span class="n">G_TESTS_PATH</span> <span class="o">=</span> <span class="n">path</span></div>
@@ -999,7 +1006,7 @@
     <span class="sd">"""Loads an ABI for a given contract without its construction.</span>
 <span class="sd">    Useful when some contracts are deployed indirectly (i.e. from other contracts).</span>
 
-<span class="sd">    :param str contract_name: The contract name whose ABI to upload</span>
+<span class="sd">    :param str contract_name: The contract name the ABI of which should be uploaded</span>
 <span class="sd">    """</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">_make_path</span><span class="p">(</span><span class="n">contract_name</span><span class="p">,</span> <span class="s1">'.abi.json'</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">G_VERBOSE</span><span class="p">:</span>
@@ -1094,7 +1101,7 @@
         <span class="n">cb</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">json</span><span class="p">)</span>
 
 <div class="viewcode-block" id="fix_abi"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.fix_abi">[docs]</a><span class="k">def</span> <span class="nf">fix_abi</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">abi</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-    <span class="sd">"""Travels given ABI calling a callback function for each node</span>
+    <span class="sd">"""Goes through given ABI. Calling a callback function for each node</span>
 
 <span class="sd">    :param str name: Contract name</span>
 <span class="sd">    :param dict abi: Contract ABI</span>
@@ -1109,7 +1116,7 @@
 <div class="viewcode-block" id="get_balance"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.get_balance">[docs]</a><span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="n">addr</span><span class="p">):</span>
     <span class="sd">"""Retrieves the balance of a given address.</span>
 
-<span class="sd">    :param Address addr: The file name</span>
+<span class="sd">    :param Address addr: The address of a contract</span>
 <span class="sd">    :return: Current account balance</span>
 <span class="sd">    :rtype: num</span>
 <span class="sd">    """</span>
@@ -1118,7 +1125,7 @@
 
 
 <div class="viewcode-block" id="BaseContract"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract">[docs]</a><span class="k">class</span> <span class="nc">BaseContract</span><span class="p">:</span>
-    <span class="sd">"""The :class:`BaseContract &lt;BaseContract&gt;` object, which responsible</span>
+    <span class="sd">"""The :class:`BaseContract &lt;BaseContract&gt;` object, which is responsible</span>
 <span class="sd">    for deploying contracts and interaction with deployed contracts.</span>
 <span class="sd">    """</span>
 <div class="viewcode-block" id="BaseContract.__init__"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -1136,7 +1143,7 @@
 
 <span class="sd">        :param str name: Name used to load contract's bytecode and ABI</span>
 <span class="sd">        :param dict ctor_params: Parameters for offchain constructor call</span>
-<span class="sd">            If None constructor is not called and can be called with</span>
+<span class="sd">            If None, constructor is not called and can be called with</span>
 <span class="sd">            separate `call_method()` call (onchain constructed)</span>
 <span class="sd">        :param num wc: workchain_id to deploy contract to</span>
 <span class="sd">        :param Address address: If this parameter is specified no new contract is created</span>
@@ -1146,7 +1153,7 @@
 <span class="sd">        :param str pubkey: Public key used in contract construction</span>
 <span class="sd">        :param str private_key: Private key used to sign construction message</span>
 <span class="sd">        :param num balance: Desired contract balance</span>
-<span class="sd">        :param str nickname: Nickname of a contract used in verbose output</span>
+<span class="sd">        :param str nickname: Nickname of the contract used in verbose output</span>
 <span class="sd">        """</span>
         <span class="n">full_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">G_TESTS_PATH</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="n">just_deployed</span> <span class="o">=</span> <span class="kc">False</span>
@@ -1200,17 +1207,17 @@
         <span class="k">return</span> <span class="n">get_balance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="BaseContract.address"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.address">[docs]</a>    <span class="k">def</span> <span class="nf">address</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Returns address of a given contact.</span>
+        <span class="sd">"""Returns address of a given contract.</span>
 
-<span class="sd">        :return: Address of contact</span>
+<span class="sd">        :return: Address of contract</span>
 <span class="sd">        :rtype: Address</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span></div>
 
 <div class="viewcode-block" id="BaseContract.addr"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.addr">[docs]</a>    <span class="k">def</span> <span class="nf">addr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Returns address of a given contact. Shorter version of `address()`.</span>
+        <span class="sd">"""Returns address of a given contract. Shorter version of `address()`.</span>
 
-<span class="sd">        :return: Address of contact</span>
+<span class="sd">        :return: Address of contract</span>
 <span class="sd">        :rtype: Address</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addr_</span></div>
@@ -1291,7 +1298,7 @@
 
 <span class="sd">        :param str method: Name of a getter</span>
 <span class="sd">        :param dict params: A dictionary with getter parameters</span>
-<span class="sd">        :param str key: (Optional) If function returns tuple this parameters forces to return only one value under the desired key.</span>
+<span class="sd">        :param str key: (optional) If function returns tuple this parameter forces to return only one value under the desired key.</span>
 <span class="sd">        :param num expect_ec: Expected exit code. Use non-zero value</span>
 <span class="sd">            if you expect a getter to raise an exception</span>
 <span class="sd">        :param list dont_decode_fields: A list of fields in answer that should not be decoded</span>
@@ -1386,9 +1393,9 @@
 <div class="viewcode-block" id="BaseContract.call_method"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.call_method">[docs]</a>    <span class="k">def</span> <span class="nf">call_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span> <span class="n">private_key</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
         <span class="sd">"""Calls a given method.</span>
 
-<span class="sd">        :param str method: Name of a method to be called</span>
-<span class="sd">        :param dict params: A dictionary with parameters for calling a contract function</span>
-<span class="sd">        :param str private_key: A private key to be used to sign a message</span>
+<span class="sd">        :param str method: Name of the method to be called</span>
+<span class="sd">        :param dict params: A dictionary with parameters for calling the contract function</span>
+<span class="sd">        :param str private_key: A private key to be used to sign the message</span>
 <span class="sd">        :param num expect_ec: Expected exit code. Use non-zero value</span>
 <span class="sd">            if you expect a method to raise an exception</span>
 <span class="sd">        :return: Value in decoded form (if method returns something)</span>
@@ -1427,8 +1434,8 @@
 <div class="viewcode-block" id="BaseContract.call_method_signed"><a class="viewcode-back" href="../../ts4.html#tonos_ts4.ts4.BaseContract.call_method_signed">[docs]</a>    <span class="k">def</span> <span class="nf">call_method_signed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span> <span class="n">expect_ec</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
         <span class="sd">"""Calls a given method using contract's private key.</span>
 
-<span class="sd">        :param str method: Name of a method to be called</span>
-<span class="sd">        :param dict params: A dictionary with parameters for calling a contract function</span>
+<span class="sd">        :param str method: Name of the method to be called</span>
+<span class="sd">        :param dict params: A dictionary with parameters for calling the contract function</span>
 <span class="sd">        :param num expect_ec: Expected exit code. Use non-zero value</span>
 <span class="sd">            if you expect a method to raise an exception</span>
 <span class="sd">        """</span>
